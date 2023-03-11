@@ -1,0 +1,16 @@
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\bin\Debug\jsmhToolChest.exe.config
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\bin\Debug\jsmhToolChest.exe
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\bin\Debug\jsmhToolChest.pdb
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.csproj.AssemblyReference.cache
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.Properties.Resources.resources
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.csproj.GenerateResource.cache
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.csproj.CoreCompileInputs.cache
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.exe
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.pdb
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.MainWindow.resources
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\bin\Debug\Newtonsoft.Json.xml
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.csproj.CopyComplete
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.Resource1.resources
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.csproj.SuggestedBindingRedirects.cache
+D:\jsmh\cSharp\Project\jsmhToolChest\jsmhToolChest\obj\Debug\jsmhToolChest.csproj.Fody.CopyLocal.cache
