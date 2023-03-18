@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jsmhToolChest", "jsmhToolChest\jsmhToolChest.csproj", "{AC0CC16C-48B1-47BE-870D-A7690D12F472}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC0CC16C-48B1-47BE-870D-A7690D12F472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0CC16C-48B1-47BE-870D-A7690D12F472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0CC16C-48B1-47BE-870D-A7690D12F472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0CC16C-48B1-47BE-870D-A7690D12F472}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {48B340B4-A32A-44E3-8B6C-6C14B0925219}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,3120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FastWin32</name>
+    </assembly>
+    <members>
+        <member name="T:FastWin32.Asm.AsmData">
+            <summary>
+            汇编指令，机器码对应表
+            </summary>
+        </member>
+        <member name="P:FastWin32.Asm.AsmData.Opcode">
+            <summary>
+            汇编指令
+            </summary>
+        </member>
+        <member name="P:FastWin32.Asm.AsmData.Bytes">
+            <summary>
+            机器码
+            </summary>
+        </member>
+        <member name="M:FastWin32.Asm.AsmData.#ctor(System.String)">
+            <summary>
+            实例化对应表
+            </summary>
+            <param name="opcode">汇编指令</param>
+        </member>
+        <member name="M:FastWin32.Asm.AsmData.AsReadOnly">
+            <summary>
+            更新对应的机器码，设置<see cref="F:FastWin32.Asm.AsmData._byteList"/>为<see langword="null"/>，转换为只读模式
+            </summary>
+        </member>
+        <member name="M:FastWin32.Asm.AsmData.ToString">
+            <summary>
+            返回表示当前对象的字符串。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Asm.AsmCompilerException">
+            <summary>
+            Asm编译/反编译错误
+            </summary>
+        </member>
+        <member name="M:FastWin32.Asm.AsmCompilerException.#ctor(System.String)">
+            <summary>
+            用指定的错误消息创建新实例
+            </summary>
+            <param name="message">描述错误的消息</param>
+        </member>
+        <member name="T:FastWin32.Asm.Assembler">
+            <summary>
+            汇编器，提供编译与反编译支持
+            </summary>
+        </member>
+        <member name="F:FastWin32.Asm.Assembler._nasmPath">
+            <summary>
+            汇编器路径
+            </summary>
+        </member>
+        <member name="F:FastWin32.Asm.Assembler._ndisasmPath">
+            <summary>
+            反汇编器路径
+            </summary>
+        </member>
+        <member name="P:FastWin32.Asm.Assembler.NasmPath">
+            <summary>
+            汇编器路径
+            </summary>
+        </member>
+        <member name="P:FastWin32.Asm.Assembler.NdisasmPath">
+            <summary>
+            反汇编器路径
+            </summary>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.OpcodesToBytes(System.String[],System.Boolean)">
+            <summary>
+            汇编指令转机器码
+            </summary>
+            <param name="opcodes">汇编指令</param>
+            <param name="is64">是否使用64位汇编</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.OpcodesToBytesRaw(System.String[],System.Boolean)">
+            <summary>
+            汇编指令转机器码保留原始数据
+            </summary>
+            <param name="opcodes">汇编指令</param>
+            <param name="is64">是否使用64位汇编</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetTokensNasm(System.String)">
+            <summary>
+            获取nasm编译后生成list的Token
+            </summary>
+            <param name="line">list中的一行</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetAllBytes(System.Collections.Generic.IList{FastWin32.Asm.AsmData})">
+            <summary>
+            获取<see cref="T:System.Collections.Generic.IList`1"/>中所有机器码（相当于将<see cref="M:FastWin32.Asm.Assembler.GetAllBytesArray(System.Collections.Generic.IList{FastWin32.Asm.AsmData})"/>的返回值拼接为一个数组）
+            </summary>
+            <param name="asmDataList"><see cref="T:FastWin32.Asm.AsmData"/>列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetAllBytesArray(System.Collections.Generic.IList{FastWin32.Asm.AsmData})">
+            <summary>
+            获取<see cref="T:System.Collections.Generic.IList`1"/>中所有机器码数组
+            </summary>
+            <param name="asmDataList"><see cref="T:FastWin32.Asm.AsmData"/>列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.BytesToOpcodes(System.Byte[],System.Boolean)">
+            <summary>
+            机器码转汇编指令
+            </summary>
+            <param name="bytes">机器码</param>
+            <param name="is64">是否使用64位汇编</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.BytesToOpcodesRaw(System.Byte[],System.Boolean)">
+            <summary>
+            机器码转汇编指令保留原始数据
+            </summary>
+            <param name="bytes">机器码</param>
+            <param name="is64">是否使用64位汇编</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetTokensNdisasm(System.String)">
+            <summary>
+            获取ndisasm反编译后生成list的Token
+            </summary>
+            <param name="line">list中的一行</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetAllOpcodes(System.Collections.Generic.IList{FastWin32.Asm.AsmData})">
+            <summary>
+            获取<see cref="T:System.Collections.Generic.IList`1"/>中所有汇编指令
+            </summary>
+            <param name="asmDataList"><see cref="T:FastWin32.Asm.AsmData"/>列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetTempFileName">
+            <summary>
+            获取临时文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetFunctionPointer(System.Byte[])">
+            <summary>
+            将机器码写入内存，返回函数指针。如果执行失败，返回<see cref="F:System.IntPtr.Zero"/>
+            </summary>
+            <param name="bytes">机器码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetFunctionPointer(System.String[],System.Boolean)">
+            <summary>
+            将汇编指令写入内存，返回函数指针。如果执行失败，返回 <see cref="F:System.IntPtr.Zero"/>
+            </summary>
+            <param name="opcodes">汇编指令</param>
+            <param name="is64">是否使用64位汇编</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetDelegate``1(System.Byte[])">
+            <summary>
+            将机器码写入内存，返回对应的委托。如果执行失败，返回<see langword="null"/>
+            </summary>
+            <typeparam name="TDelegate">委托</typeparam>
+            <param name="bytes">机器码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Asm.Assembler.GetDelegate``1(System.String[],System.Boolean)">
+            <summary>
+            将机器码写入内存，返回对应的委托。如果执行失败，返回<see langword="null"/>
+            </summary>
+            <typeparam name="TDelegate"></typeparam>
+            <param name="opcodes">汇编指令</param>
+            <param name="is64">是否使用64位汇编</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Diagnostics.Injector">
+            <summary>
+            注入
+            </summary>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.OpenProcessInjecting(System.UInt32)">
+            <summary>
+            打开进程（注入使用）
+            </summary>
+            <param name="processId">进程句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.InjectManaged(System.UInt32,System.String,System.String,System.String,System.String)">
+            <summary>
+            注入非托管DLL
+            </summary>
+            <param name="processId">要注入的进程ID</param>
+            <param name="assemblyPath">要注入程序集的路径</param>
+            <param name="typeName">类型名（命名空间+类型名，比如NamespaceA.ClassB）</param>
+            <param name="methodName">方法名（比如MethodC），该方法必须具有此类签名static int MethodName(string)，比如private static int InjectingMain(string argument)</param>
+            <param name="argument">参数，可传入null。</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.InjectManaged(System.UInt32,System.String,System.String,System.String,System.String,System.Int32@)">
+            <summary>
+            注入非托管DLL，并获取被调用方法的返回值（警告：被调用方法返回后才能获取到返回值，<see cref="M:FastWin32.Diagnostics.Injector.InjectManaged(System.UInt32,System.String,System.String,System.String,System.String,System.Int32@)"/>方法将一直等待到被调用方法返回。如果仅注入程序集而不需要获取返回值，请使用重载版本<see cref="M:FastWin32.Diagnostics.Injector.InjectManaged(System.UInt32,System.String,System.String,System.String,System.String)"/>）
+            </summary>
+            <param name="processId">要注入的进程ID</param>
+            <param name="assemblyPath">要注入程序集的路径</param>
+            <param name="typeName">类型名（命名空间+类型名，比如NamespaceA.ClassB）</param>
+            <param name="methodName">方法名（比如MethodC），该方法必须具有此类签名static int MethodName(string)，比如private static int InjectingMain(string argument)</param>
+            <param name="argument">参数，可传入null。</param>
+            <param name="returnValue">被调用方法返回的整数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.InjectManagedInternal(System.IntPtr,System.String,System.String,System.String,System.String,System.Int32@,System.Boolean)">
+            <summary>
+            注入非托管DLL
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="assemblyPath">要注入程序集的路径</param>
+            <param name="typeName">类型名（命名空间+类型名，比如NamespaceA.ClassB）</param>
+            <param name="methodName">方法名（比如MethodC），该方法必须具有此类签名static int MethodName(string)，比如private static int InjectingMain(string argument)</param>
+            <param name="argument">参数，可传入null。</param>
+            <param name="returnValue">被调用方法返回的整数值</param>
+            <param name="wait">是否等待返回值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.InjectUnmanaged(System.UInt32,System.String)">
+            <summary>
+            注入非托管DLL
+            </summary>
+            <param name="processId">要注入的进程ID</param>
+            <param name="dllPath">要注入DLL的路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.InjectUnmanagedInternal(System.IntPtr,System.String)">
+            <summary>
+            注入非托管Dll
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="dllPath">要注入的Dll的路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.GetSystemPath(System.Boolean)">
+            <summary>
+            获取系统文件夹路径
+            </summary>
+            <param name="is64">是否64位</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.WriteAsm(System.IntPtr,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            写入启动CLR的机器码，返回函数指针
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="clrVersion">CLR版本</param>
+            <param name="assemblyPath">程序集路径（绝对路径）</param>
+            <param name="typeName">类型名</param>
+            <param name="methodName">方法名</param>
+            <param name="argument">参数（可空，如果非空，长度必须小于2000）</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.GetAsmCommon(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            获取设置好参数的机器码
+            </summary>
+            <param name="clrVersion">CLR版本</param>
+            <param name="assemblyPath">程序集路径（绝对路径）</param>
+            <param name="typeName">类型名</param>
+            <param name="methodName">方法名</param>
+            <param name="argument">参数（可空，如果非空，长度必须小于2000）</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.SetAsm32V2(System.Byte*,System.Int32,System.Int32)">
+            <summary>
+            设置启动32位CLR V2的机器码
+            </summary>
+            <param name="p">机器码指针</param>
+            <param name="pFunction">函数指针</param>
+            <param name="pCorBindToRuntimeEx">CorBindToRuntimeEx的函数指针</param>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.SetAsm32V4(System.Byte*,System.Int32,System.Int32)">
+            <summary>
+            设置启动32位CLR V4的机器码
+            </summary>
+            <param name="p">机器码指针</param>
+            <param name="pFunction">函数指针</param>
+            <param name="pCLRCreateInstance">CLRCreateInstance的函数指针</param>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.SetAsm64V2(System.Byte*,System.Int64,System.Int64)">
+            <summary>
+            设置启动64位CLR V2的机器码
+            </summary>
+            <param name="p">机器码指针</param>
+            <param name="pFunction">函数指针</param>
+            <param name="pCorBindToRuntimeEx">CorBindToRuntimeEx的函数指针</param>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.SetAsm64V4(System.Byte*,System.Int64,System.Int64)">
+            <summary>
+            设置启动64位CLR V4的机器码
+            </summary>
+            <param name="p">机器码指针</param>
+            <param name="pFunction">函数指针</param>
+            <param name="pCLRCreateInstance">CLRCreateInstance的函数指针</param>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.IsAssembly(System.String,System.Boolean@,System.String@)">
+            <summary>
+            判断是否为程序集，如果是，输出CLR版本
+            </summary>
+            <param name="path">路径</param>
+            <param name="isAssembly">是否程序集</param>
+            <param name="clrVersion">CLR版本</param>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.GetVersionString(System.IO.BinaryReader)">
+            <summary>
+            获取CLR版本
+            </summary>
+            <param name="binaryReader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.GetPEInfo(System.IO.BinaryReader,System.UInt32@,System.Boolean@)">
+            <summary>
+            获取PE信息
+            </summary>
+            <param name="binaryReader"></param>
+            <param name="peOffset"></param>
+            <param name="is64"></param>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.GetSections(System.IO.BinaryReader)">
+            <summary>
+            获取节
+            </summary>
+            <param name="binaryReader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Injector.GetSection(System.UInt32,FastWin32.Diagnostics.Injector.Section[])">
+            <summary>
+            获取RVA对应节
+            </summary>
+            <param name="rva"></param>
+            <param name="sections"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Diagnostics.Process32">
+            <summary>
+            进程
+            </summary>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.OpenProcessQuery(System.UInt32)">
+            <summary>
+            打开进程（内存读+查询）
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.OpenProcessProcessSuspendResume(System.UInt32)">
+            <summary>
+            打开进程（进程挂起/恢复）
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetProcessIdByWindowHandle(System.IntPtr)">
+            <summary>
+            通过窗口句柄获取进程ID
+            </summary>
+            <param name="windowHandle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetProcessIdByThreadId(System.UInt32)">
+            <summary>
+            通过线程ID获取进程ID
+            </summary>
+            <param name="threadId">线程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetCurrentProcessId">
+            <summary>
+            获取当前进程ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetAllProcessIds">
+            <summary>
+            获取所有进程ID，失败返回null
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetProcessName(System.UInt32)">
+            <summary>
+            获取进程名
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetProcessNameInternal(System.IntPtr)">
+            <summary>
+            获取进程名
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetProcessPath(System.UInt32)">
+            <summary>
+            获取进程路径
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.GetProcessPathInternal(System.IntPtr)">
+            <summary>
+            获取进程路径
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.Is64BitProcess(System.UInt32,System.Boolean@)">
+            <summary>
+            判断进程是否为64位进程，返回值为方法是否执行成功
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="is64">是否为64位进程</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.Is64BitProcessInternal(System.IntPtr,System.Boolean@)">
+            <summary>
+            判断进程是否为64位进程，返回值为方法是否执行成功
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="is64">是否为64位进程</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.SuspendProcess(System.UInt32)">
+            <summary>
+            暂停进程
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.SuspendProcessInternal(System.IntPtr)">
+            <summary>
+            暂停进程
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.ResumeProcess(System.UInt32)">
+            <summary>
+            恢复进程
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.ResumeProcessInternal(System.IntPtr)">
+            <summary>
+            恢复进程
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Process32.SelfElevate(System.IntPtr)">
+            <summary>
+            动态提升进程权限，以管理员模式运行当前进程，如果执行成功当前进程将退出，执行失败无反应
+            </summary>
+            <param name="windowHandle">主窗口的句柄</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Diagnostics.EnumModulesCallback">
+            <summary>
+            遍历模块回调方法，要继续遍历,返回true;要停止遍历,返回false
+            </summary>
+            <param name="moduleHandle">模块句柄</param>
+            <param name="moduleName">模块名</param>
+            <param name="filePath">模块文件所在路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Diagnostics.EnumFunctionsCallback">
+            <summary>
+            遍历模块导出函数回调方法，要继续遍历,返回true;要停止遍历,返回false
+            </summary>
+            <param name="pFunction">函数指针</param>
+            <param name="functionName">函数名，当函数以序号方式导出时，此参数为null</param>
+            <param name="ordinal">函数导出序号</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Diagnostics.Module32">
+            <summary>
+            模块
+            </summary>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.OpenProcessVMReadQuery(System.UInt32)">
+            <summary>
+            打开进程（内存读+查询）
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetHandle">
+            <summary>
+            获取当前进程主模块句柄
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetHandle(System.String)">
+            <summary>
+            获取当前进程模块句柄，获取失败时返回 <see cref="F:System.IntPtr.Zero"/>
+            </summary>
+            <param name="moduleName">模块名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetHandle(System.UInt32)">
+            <summary>
+            获取主模块句柄，获取失败时返回 <see cref="F:System.IntPtr.Zero"/>
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetHandle(System.UInt32,System.String)">
+            <summary>
+            获取模块句柄，获取失败时返回 <see cref="F:System.IntPtr.Zero"/>
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="moduleName">模块名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetHandleInternal(System.IntPtr,System.Boolean,System.String)">
+            <summary>
+            获取模块句柄，获取失败时返回 <see cref="F:System.IntPtr.Zero"/>
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="first">是否返回第一个模块句柄</param>
+            <param name="moduleName">模块名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.EnumModules(System.UInt32,FastWin32.Diagnostics.EnumModulesCallback,System.Boolean,System.Boolean)">
+            <summary>
+            遍历模块，遍历成功返回true，失败返回false（返回值与回调方法的返回值无关）
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="callback">回调方法，不能为空</param>
+            <param name="getModuleName">是否向回调方法提供模块名，默认为是</param>
+            <param name="getFilePath">是否向回调方法提供模块文件路径，默认为否</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetProcAddress(System.String,System.String)">
+            <summary>
+            获取函数地址
+            </summary>
+            <param name="moduleName">模块名</param>
+            <param name="functionName">函数名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetProcAddress(System.UInt32,System.String,System.String)">
+            <summary>
+            获取远程进程函数地址
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="moduleName">模块名</param>
+            <param name="functionName">函数名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetProcAddressInternal(System.String,System.String)">
+            <summary>
+            获取函数地址
+            </summary>
+            <param name="moduleName">模块名</param>
+            <param name="functionName">函数名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.GetProcAddressInternal(System.IntPtr,System.String,System.String)">
+            <summary>
+            获取远程进程函数地址
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="moduleName">模块名</param>
+            <param name="functionName">函数名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.EnumFunctions(System.UInt32,System.String,FastWin32.Diagnostics.EnumFunctionsCallback)">
+            <summary>
+            枚举模块导出函数
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="moduleName">模块名</param>
+            <param name="callback">回调函数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.EnumFunctions(System.UInt32,System.IntPtr,FastWin32.Diagnostics.EnumFunctionsCallback)">
+            <summary>
+            枚举模块导出函数
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="moduleHandle">模块句柄</param>
+            <param name="callback">回调函数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.EnumFunctionsInternal(System.IntPtr,System.String,FastWin32.Diagnostics.EnumFunctionsCallback)">
+            <summary>
+            枚举模块导出函数
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="moduleName">模块名</param>
+            <param name="callback">回调函数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Diagnostics.Module32.EnumFunctionsInternal(System.IntPtr,System.IntPtr,FastWin32.Diagnostics.EnumFunctionsCallback)">
+            <summary>
+            枚举模块导出函数
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="moduleHandle">模块句柄</param>
+            <param name="callback">回调函数</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.FastWin32Settings">
+            <summary>
+            全局设置
+            </summary>
+        </member>
+        <member name="F:FastWin32.FastWin32Settings.Is64BitOperatingSystem">
+            <summary>
+            确定当前操作系统是否为 64 位操作系统。
+            </summary>
+        </member>
+        <member name="P:FastWin32.FastWin32Settings.SeDebugPrivilege">
+            <summary>
+            SeDebugPrivilege特权
+            </summary>
+        </member>
+        <member name="M:FastWin32.FastWin32Settings.EnableDebugPrivilege">
+            <summary>
+            将SeDebugPrivilege特权赋予当前进程
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.FastWin32Settings.DisableDebugPrivilege">
+            <summary>
+            取消当前进程的SeDebugPrivilege特权
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Hook.Method.LocalHook">
+            <summary>
+            挂钩当前进程API
+            </summary>
+        </member>
+        <member name="M:FastWin32.Hook.Method.LocalHook.Kill(System.String,System.String)">
+            <summary>
+            杀死函数，让函数不执行任何动作
+            </summary>
+            <param name="moduleName">模块名</param>
+            <param name="apiName">函数名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Hook.Method.LocalHook.Kill(System.Reflection.MethodInfo)">
+            <summary>
+            杀死方法，让方法不执行任何动作
+            </summary>
+            <param name="methodInfo">方法信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Hook.Method.LocalHook.Kill(System.IntPtr)">
+            <summary>
+            杀死函数，让函数不执行任何动作
+            </summary>
+            <param name="entry">函数入口地址</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Hook.Method.RemoteHook">
+            <summary>
+            挂钩远程进程API
+            </summary>
+        </member>
+        <member name="T:FastWin32.Memory.MemoryManagement">
+            <summary>
+            内存管理
+            </summary>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.OpenProcessVMOperation(System.UInt32)">
+            <summary>
+            打开进程（内存操作）
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="F:FastWin32.Memory.MemoryManagement.AllMemoryProtectionFlags">
+            <summary>
+            所有内存保护选项
+            </summary>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.ProtectionFlagsGenerator(System.Boolean,System.Boolean)">
+            <summary>
+            根据提供选项生成对应的内存保护标识
+            </summary>
+            <param name="writable">可写</param>
+            <param name="executable">可执行</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemory(System.IntPtr)">
+            <summary>
+            在当前进程中分配内存（默认可写，不可执行）
+            </summary>
+            <param name="size">要分配内存的大小</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemory(System.IntPtr,System.Boolean,System.Boolean)">
+            <summary>
+            在当前进程中分配内存
+            </summary>
+            <param name="size">要分配内存的大小</param>
+            <param name="writable">可写</param>
+            <param name="executable">可执行</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemoryEx(System.UInt32,System.IntPtr)">
+            <summary>
+            分配内存（默认可写，不可执行）
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="size">要分配内存的大小</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemoryEx(System.UInt32,System.IntPtr,System.Boolean,System.Boolean)">
+            <summary>
+            分配内存
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="size">要分配内存的大小</param>
+            <param name="writable">可写</param>
+            <param name="executable">可执行</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemoryInternal(System.IntPtr)">
+            <summary>
+            在当前进程中分配内存（默认可写，不可执行）
+            </summary>
+            <param name="size">要分配内存的大小</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemoryInternal(System.IntPtr,System.UInt32)">
+            <summary>
+            在当前进程中分配内存
+            </summary>
+            <param name="size">要分配内存的大小</param>
+            <param name="flags">内存保护选项</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemoryExInternal(System.IntPtr,System.IntPtr)">
+            <summary>
+            分配内存（默认可写，不可执行）
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="size">要分配内存的大小</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.AllocMemoryExInternal(System.IntPtr,System.IntPtr,System.UInt32)">
+            <summary>
+            分配内存
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="size">要分配内存的大小</param>
+            <param name="flags">内存保护选项</param>
+            <returns>分配得到的内存所在地址</returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemory(System.IntPtr)">
+            <summary>
+            在当前进程中释放内存（MEM_RELEASE）
+            </summary>
+            <param name="addr">指定释放内存的地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemory(System.IntPtr,System.IntPtr)">
+            <summary>
+            在当前进程中释放内存（MEM_DECOMMIT）
+            </summary>
+            <param name="addr">指定释放内存的地址</param>
+            <param name="size">要释放内存的大小</param>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemoryEx(System.UInt32,System.IntPtr)">
+            <summary>
+            释放内存（MEM_RELEASE）
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">指定释放内存的地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemoryEx(System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            释放内存（MEM_DECOMMIT）
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">指定释放内存的地址</param>
+            <param name="size">要释放内存的大小</param>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemoryInternal(System.IntPtr)">
+            <summary>
+            在当前进程中释放内存（MEM_RELEASE）
+            </summary>
+            <param name="addr">指定释放内存的地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemoryInternal(System.IntPtr,System.IntPtr)">
+            <summary>
+            在当前进程中释放内存（MEM_DECOMMIT）
+            </summary>
+            <param name="addr">指定释放内存的地址</param>
+            <param name="size">要释放内存的大小</param>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemoryExInternal(System.IntPtr,System.IntPtr)">
+            <summary>
+            释放内存（MEM_RELEASE）
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">指定释放内存的地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryManagement.FreeMemoryExInternal(System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+            释放内存（MEM_DECOMMIT）
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">指定释放内存的地址</param>
+            <param name="size">要释放内存的大小</param>
+        </member>
+        <member name="T:FastWin32.Memory.ReadPageMode">
+            <summary>
+            读取内存页面模式
+            </summary>
+        </member>
+        <member name="F:FastWin32.Memory.ReadPageMode.After">
+            <summary>
+            当前地址之后（包括当前地址）
+            </summary>
+        </member>
+        <member name="F:FastWin32.Memory.ReadPageMode.Before">
+            <summary>
+            当前地址之前（包括当前地址）
+            </summary>
+        </member>
+        <member name="F:FastWin32.Memory.ReadPageMode.Full">
+            <summary>
+            整个内存页面
+            </summary>
+        </member>
+        <member name="T:FastWin32.Memory.EnumPagesCallback">
+            <summary>
+            遍历页面回调方法，要继续遍历,返回true;要停止遍历,返回false
+            </summary>
+            <param name="pageInfo">页面信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Memory.MemoryIO">
+            <summary>
+            内存读写
+            </summary>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.OpenProcessVMReadWriteQuery(System.UInt32)">
+            <summary>
+            打开进程（内存读写+查询）
+            </summary>
+            <param name="processId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.GetPointerAddrInternal(System.IntPtr,FastWin32.Memory.Pointer)">
+            <summary>
+            获取指针指向的地址
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="p">指针</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Memory.MemoryIO.IOTemplateCallback">
+            <summary>
+            内存读写模板回调函数
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Memory.MemoryIO.IOTemplateCallback`1">
+            <summary>
+            内存读写模板回调函数
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.IOTemplate(System.UInt32,System.IntPtr,FastWin32.Memory.MemoryIO.IOTemplateCallback)">
+            <summary>
+            内存读写模板
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="callback">读写器</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.IOTemplate(System.UInt32,FastWin32.Memory.Pointer,FastWin32.Memory.MemoryIO.IOTemplateCallback)">
+            <summary>
+            内存读写模板
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="callback">读写器</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.IOTemplate``1(System.UInt32,System.IntPtr,``0@,FastWin32.Memory.MemoryIO.IOTemplateCallback{``0})">
+            <summary>
+            内存读取模板
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="callback">读写器</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.IOTemplate``1(System.UInt32,FastWin32.Memory.Pointer,``0@,FastWin32.Memory.MemoryIO.IOTemplateCallback{``0})">
+            <summary>
+            内存读写模板
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="callback">读写器</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])">
+            <summary>
+            读取字节数组，读取的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[],System.IntPtr@)">
+            <summary>
+            读取字节数组，读取的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="numOfRead">实际读取的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])">
+            <summary>
+            读取字节数组，读取的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[],System.IntPtr@)">
+            <summary>
+            读取字节数组，读取的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="numOfRead">实际读取的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBytesInternal(System.IntPtr,System.IntPtr,System.Byte[])">
+            <summary>
+            读取字节数组，读取的长度由value的长度决定
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBytesInternal(System.IntPtr,System.IntPtr,System.Byte[],System.IntPtr@)">
+            <summary>
+            读取字节数组，读取的长度由value的长度决定
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="numOfRead">实际读取的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBytes(System.UInt32,System.IntPtr,System.Byte[])">
+            <summary>
+            写入字节数组，写入的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBytes(System.UInt32,System.IntPtr,System.Byte[],System.IntPtr@)">
+            <summary>
+            写入字节数组，写入的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="numOfWritten">实际写入的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])">
+            <summary>
+            写入字节数组，写入的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[],System.IntPtr@)">
+            <summary>
+            写入字节数组，写入的长度由value的长度决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="numOfWritten">实际写入的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBytesInternal(System.IntPtr,System.IntPtr,System.Byte[])">
+            <summary>
+            写入字节数组，写入的长度由value的长度决定
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBytesInternal(System.IntPtr,System.IntPtr,System.Byte[],System.IntPtr@)">
+            <summary>
+            写入字节数组，写入的长度由value的长度决定
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="numOfWritten">实际写入的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadPage(System.UInt32,System.IntPtr,System.Byte[]@,FastWin32.Memory.ReadPageMode)">
+            <summary>
+            读取地址所在内存页面，读取长度由页面大小以及mode决定决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="mode">读取模式</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadPage(System.UInt32,FastWin32.Memory.Pointer,System.Byte[]@,FastWin32.Memory.ReadPageMode)">
+            <summary>
+            读取地址所在内存页面，读取长度由页面大小以及mode决定决定
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="mode">读取模式</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadPageInternal(System.IntPtr,System.IntPtr,System.Byte[]@,FastWin32.Memory.ReadPageMode)">
+            <summary>
+            读取地址所在内存页面，读取长度由页面大小以及mode决定决定
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="mode">读取模式</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.EnumPages(System.UInt32,FastWin32.Memory.EnumPagesCallback)">
+            <summary>
+            遍历所有页面
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="callback">回调方法</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.EnumPages(System.UInt32,System.IntPtr,FastWin32.Memory.EnumPagesCallback)">
+            <summary>
+            从指定地址开始遍历页面
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="startAddress">起始地址</param>
+            <param name="callback">回调方法</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.EnumPagesInternal(System.IntPtr,System.IntPtr,FastWin32.Memory.EnumPagesCallback)">
+            <summary>
+            从指定地址开始遍历页面
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="startAddress">起始地址</param>
+            <param name="callback">回调方法</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadByte(System.UInt32,System.IntPtr,System.Byte@)">
+            <summary>
+            读取字节
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadByte(System.UInt32,FastWin32.Memory.Pointer,System.Byte@)">
+            <summary>
+            读取字节
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadByteInternal(System.IntPtr,System.IntPtr,System.Byte@)">
+            <summary>
+            读取字节
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteByte(System.UInt32,System.IntPtr,System.Byte)">
+            <summary>
+            写入字节
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteByte(System.UInt32,FastWin32.Memory.Pointer,System.Byte)">
+            <summary>
+            写入字节
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteByteInternal(System.IntPtr,System.IntPtr,System.Byte)">
+            <summary>
+            写入字节
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBoolean(System.UInt32,System.IntPtr,System.Boolean@)">
+            <summary>
+            读取布尔值
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBoolean(System.UInt32,FastWin32.Memory.Pointer,System.Boolean@)">
+            <summary>
+            读取布尔值
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadBooleanInternal(System.IntPtr,System.IntPtr,System.Boolean@)">
+            <summary>
+            读取布尔值
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBoolean(System.UInt32,System.IntPtr,System.Boolean)">
+            <summary>
+            写入布尔值
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBoolean(System.UInt32,FastWin32.Memory.Pointer,System.Boolean)">
+            <summary>
+            写入布尔值
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteBooleanInternal(System.IntPtr,System.IntPtr,System.Boolean)">
+            <summary>
+            写入布尔值
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadChar(System.UInt32,System.IntPtr,System.Char@)">
+            <summary>
+            读取字符
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadChar(System.UInt32,FastWin32.Memory.Pointer,System.Char@)">
+            <summary>
+            读取字符
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadCharInternal(System.IntPtr,System.IntPtr,System.Char@)">
+            <summary>
+            读取字符
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteChar(System.UInt32,System.IntPtr,System.Char)">
+            <summary>
+            写入字符
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteChar(System.UInt32,FastWin32.Memory.Pointer,System.Char)">
+            <summary>
+            写入字符
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteCharInternal(System.IntPtr,System.IntPtr,System.Char)">
+            <summary>
+            写入字符
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt16(System.UInt32,System.IntPtr,System.Int16@)">
+            <summary>
+            读取短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt16(System.UInt32,FastWin32.Memory.Pointer,System.Int16@)">
+            <summary>
+            读取短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt16Internal(System.IntPtr,System.IntPtr,System.Int16@)">
+            <summary>
+            读取短整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt16(System.UInt32,System.IntPtr,System.Int16)">
+            <summary>
+            写入短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt16(System.UInt32,FastWin32.Memory.Pointer,System.Int16)">
+            <summary>
+            写入短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt16Internal(System.IntPtr,System.IntPtr,System.Int16)">
+            <summary>
+            写入短整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt16(System.UInt32,System.IntPtr,System.UInt16@)">
+            <summary>
+            读取无符号短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt16(System.UInt32,FastWin32.Memory.Pointer,System.UInt16@)">
+            <summary>
+            读取无符号短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt16Internal(System.IntPtr,System.IntPtr,System.UInt16@)">
+            <summary>
+            读取无符号短整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt16(System.UInt32,System.IntPtr,System.UInt16)">
+            <summary>
+            写入无符号短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt16(System.UInt32,FastWin32.Memory.Pointer,System.UInt16)">
+            <summary>
+            写入无符号短整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt16Internal(System.IntPtr,System.IntPtr,System.UInt16)">
+            <summary>
+            写入无符号短整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt32(System.UInt32,System.IntPtr,System.Int32@)">
+            <summary>
+            读取整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt32(System.UInt32,FastWin32.Memory.Pointer,System.Int32@)">
+            <summary>
+            读取整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt32Internal(System.IntPtr,System.IntPtr,System.Int32@)">
+            <summary>
+            读取整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt32(System.UInt32,System.IntPtr,System.Int32)">
+            <summary>
+            写入整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt32(System.UInt32,FastWin32.Memory.Pointer,System.Int32)">
+            <summary>
+            写入整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt32Internal(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+            写入整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt32(System.UInt32,System.IntPtr,System.UInt32@)">
+            <summary>
+            读取无符号整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt32(System.UInt32,FastWin32.Memory.Pointer,System.UInt32@)">
+            <summary>
+            读取无符号整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt32Internal(System.IntPtr,System.IntPtr,System.UInt32@)">
+            <summary>
+            读取无符号整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt32(System.UInt32,System.IntPtr,System.UInt32)">
+            <summary>
+            写入无符号整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt32(System.UInt32,FastWin32.Memory.Pointer,System.UInt32)">
+            <summary>
+            写入无符号整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt32Internal(System.IntPtr,System.IntPtr,System.UInt32)">
+            <summary>
+            写入无符号整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt64(System.UInt32,System.IntPtr,System.Int64@)">
+            <summary>
+            读取长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt64(System.UInt32,FastWin32.Memory.Pointer,System.Int64@)">
+            <summary>
+            读取长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadInt64Internal(System.IntPtr,System.IntPtr,System.Int64@)">
+            <summary>
+            读取长整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt64(System.UInt32,System.IntPtr,System.Int64)">
+            <summary>
+            写入长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt64(System.UInt32,FastWin32.Memory.Pointer,System.Int64)">
+            <summary>
+            写入长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteInt64Internal(System.IntPtr,System.IntPtr,System.Int64)">
+            <summary>
+            写入长整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt64(System.UInt32,System.IntPtr,System.UInt64@)">
+            <summary>
+            读取无符号长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt64(System.UInt32,FastWin32.Memory.Pointer,System.UInt64@)">
+            <summary>
+            读取无符号长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadUInt64Internal(System.IntPtr,System.IntPtr,System.UInt64@)">
+            <summary>
+            读取无符号长整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt64(System.UInt32,System.IntPtr,System.UInt64)">
+            <summary>
+            写入无符号长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt64(System.UInt32,FastWin32.Memory.Pointer,System.UInt64)">
+            <summary>
+            写入无符号长整形
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteUInt64Internal(System.IntPtr,System.IntPtr,System.UInt64)">
+            <summary>
+            写入无符号长整形
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadFloat(System.UInt32,System.IntPtr,System.Single@)">
+            <summary>
+            读取单精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadFloat(System.UInt32,FastWin32.Memory.Pointer,System.Single@)">
+            <summary>
+            读取单精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadFloatInternal(System.IntPtr,System.IntPtr,System.Single@)">
+            <summary>
+            读取单精度浮点型
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteFloat(System.UInt32,System.IntPtr,System.Single)">
+            <summary>
+            写入单精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteFloat(System.UInt32,FastWin32.Memory.Pointer,System.Single)">
+            <summary>
+            写入单精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteFloatInternal(System.IntPtr,System.IntPtr,System.Single)">
+            <summary>
+            写入单精度浮点型
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadDouble(System.UInt32,System.IntPtr,System.Double@)">
+            <summary>
+            读取双精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadDouble(System.UInt32,FastWin32.Memory.Pointer,System.Double@)">
+            <summary>
+            读取双精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadDoubleInternal(System.IntPtr,System.IntPtr,System.Double@)">
+            <summary>
+            读取双精度浮点型
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteDouble(System.UInt32,System.IntPtr,System.Double)">
+            <summary>
+            写入双精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteDouble(System.UInt32,FastWin32.Memory.Pointer,System.Double)">
+            <summary>
+            写入双精度浮点型
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteDoubleInternal(System.IntPtr,System.IntPtr,System.Double)">
+            <summary>
+            写入双精度浮点型
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadIntPtr(System.UInt32,System.IntPtr,System.IntPtr@)">
+            <summary>
+            读取指针
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadIntPtr(System.UInt32,FastWin32.Memory.Pointer,System.IntPtr@)">
+            <summary>
+            读取指针
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadIntPtrInternal(System.IntPtr,System.IntPtr,System.IntPtr@)">
+            <summary>
+            读取指针
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteIntPtr(System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            写入指针
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteIntPtr(System.UInt32,FastWin32.Memory.Pointer,System.IntPtr)">
+            <summary>
+            写入指针
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteIntPtrInternal(System.IntPtr,System.IntPtr,System.IntPtr)">
+            <summary>
+            写入指针
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadString(System.UInt32,System.IntPtr,System.String@,System.Boolean)">
+            <summary>
+            读取字符串，使用UTF16编码，如果读取到非托管进程中，并且读取为LPSTR LPWSTTR BSTR等字符串类型，请自行转换为byte[]并使用<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])"/>，<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])"/>
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="doubleZero">是否以2个\0结尾（比如LPWSTR以2个字节\0结尾，而LPSTR以1个字节\0结尾）</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadString(System.UInt32,System.IntPtr,System.String@,System.Boolean,System.Text.Encoding)">
+            <summary>
+            读取字符串，如果读取到非托管进程中，并且读取为LPSTR LPWSTTR BSTR等字符串类型，请自行转换为byte[]并使用<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])"/>，<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])"/>
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="doubleZero">是否以2个\0结尾（比如LPWSTR以2个字节\0结尾，而LPSTR以1个字节\0结尾）</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadString(System.UInt32,FastWin32.Memory.Pointer,System.String@,System.Boolean)">
+            <summary>
+            读取字符串，使用UTF16编码，如果读取到非托管进程中，并且读取为LPSTR LPWSTTR BSTR等字符串类型，请自行转换为byte[]并使用<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])"/>，<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])"/>
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="doubleZero">是否以2个\0结尾（比如LPWSTR以2个字节\0结尾，而LPSTR以1个字节\0结尾）</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadString(System.UInt32,FastWin32.Memory.Pointer,System.String@,System.Boolean,System.Text.Encoding)">
+            <summary>
+            读取字符串，如果读取到非托管进程中，并且读取为LPSTR LPWSTTR BSTR等字符串类型，请自行转换为byte[]并使用<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])"/>，<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])"/>
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="doubleZero">是否以2个\0结尾（比如LPWSTR以2个字节\0结尾，而LPSTR以1个字节\0结尾）</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadStringInternal(System.IntPtr,System.IntPtr,System.String@,System.Int32,System.Boolean)">
+            <summary>
+            读取字符串，使用UTF16编码，如果读取到非托管进程中，并且读取为LPSTR LPWSTTR BSTR等字符串类型，请自行转换为byte[]并使用<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])"/>，<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])"/>
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="bufferSize">缓存大小</param>
+            <param name="doubleZero">是否以2个\0结尾（比如LPWSTR以2个字节\0结尾，而LPSTR以1个字节\0结尾）</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.ReadStringInternal(System.IntPtr,System.IntPtr,System.String@,System.Int32,System.Boolean,System.Text.Encoding)">
+            <summary>
+            读取字符串，如果读取到非托管进程中，并且读取为LPSTR LPWSTTR BSTR等字符串类型，请自行转换为byte[]并使用<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,FastWin32.Memory.Pointer,System.Byte[])"/>，<see cref="M:FastWin32.Memory.MemoryIO.ReadBytes(System.UInt32,System.IntPtr,System.Byte[])"/>
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="bufferSize">缓存大小</param>
+            <param name="doubleZero">是否以2个\0结尾（比如LPWSTR以2个字节\0结尾，而LPSTR以1个字节\0结尾）</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteString(System.UInt32,System.IntPtr,System.String)">
+            <summary>
+            写入字符串，使用UTF16编码
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteString(System.UInt32,System.IntPtr,System.String,System.Text.Encoding)">
+            <summary>
+            写入字符串
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteString(System.UInt32,FastWin32.Memory.Pointer,System.String)">
+            <summary>
+            写入字符串，使用UTF16编码
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteString(System.UInt32,FastWin32.Memory.Pointer,System.String,System.Text.Encoding)">
+            <summary>
+            写入字符串
+            </summary>
+            <param name="processId">进程ID</param>
+            <param name="p">指针</param>
+            <param name="value">值</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteStringInternal(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            写入字符串，使用UTF16编码
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Memory.MemoryIO.WriteStringInternal(System.IntPtr,System.IntPtr,System.String,System.Text.Encoding)">
+            <summary>
+            写入字符串
+            </summary>
+            <param name="processHandle">进程句柄</param>
+            <param name="addr">地址</param>
+            <param name="value">值</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Memory.PageInfo">
+            <summary>
+            内存页面信息
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.PageInfo.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.PageInfo.Size">
+            <summary>
+            大小
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.PageInfo.Protect">
+            <summary>
+            保护选项
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.PageInfo.Type">
+            <summary>
+            页面类型
+            </summary>
+        </member>
+        <member name="M:FastWin32.Memory.PageInfo.ToString">
+            <summary>
+            返回表示当前对象的字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.Memory.PointerType">
+            <summary>
+            指针类型
+            </summary>
+        </member>
+        <member name="F:FastWin32.Memory.PointerType.ModuleName_Offset">
+            <summary>
+            模块名+偏移
+            </summary>
+        </member>
+        <member name="F:FastWin32.Memory.PointerType.Address_Offset">
+            <summary>
+            地址+偏移
+            </summary>
+        </member>
+        <member name="T:FastWin32.Memory.Pointer">
+            <summary>
+            指针
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.Pointer.ModuleName">
+            <summary>
+            模块名
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.Pointer.ModuleOffset">
+            <summary>
+            模块偏移
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.Pointer.BaseAddr">
+            <summary>
+            基础地址
+            </summary>
+        </member>
+        <member name="P:FastWin32.Memory.Pointer.Offset">
+            <summary>
+            偏移
+            </summary>
+        </member>
+        <member name="M:FastWin32.Memory.Pointer.#ctor(System.String,System.UInt32,System.UInt32[])">
+            <summary>
+            实例化指针结构
+            </summary>
+            <param name="moduleName">模块名</param>
+            <param name="moduleOffset">模块偏移</param>
+            <param name="offset">偏移</param>
+        </member>
+        <member name="M:FastWin32.Memory.Pointer.#ctor(System.IntPtr,System.UInt32[])">
+            <summary>
+            实例化指针结构
+            </summary>
+            <param name="baseAddr">基础地址</param>
+            <param name="offset">偏移</param>
+        </member>
+        <member name="T:FastWin32.NativeMethods">
+            <summary>
+            本地方法
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MAX_MODULE_NAME32">
+            <summary>
+            最大模块名长度
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MAX_PATH">
+            <summary>
+            最大路径长度
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.CURRENT_PROCESS">
+            <summary>
+            表示当前进程的伪句柄
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_MSGFILTER">
+            <summary>
+            Installs a hook procedure that monitors messages generated as a result of an input event in a dialog box, message box, menu, or scroll bar. For more information, see the MessageProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_JOURNALRECORD">
+            <summary>
+            Installs a hook procedure that records input messages posted to the system message queue. This hook is useful for recording macros. For more information, see the JournalRecordProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_JOURNALPLAYBACK">
+            <summary>
+            Installs a hook procedure that posts messages previously recorded by a WH_JOURNALRECORD hook procedure. For more information, see the JournalPlaybackProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_KEYBOARD">
+            <summary>
+            Installs a hook procedure that monitors keystroke messages. For more information, see the KeyboardProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_GETMESSAGE">
+            <summary>
+            Installs a hook procedure that monitors messages posted to a message queue. For more information, see the GetMsgProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_CALLWNDPROC">
+            <summary>
+            Installs a hook procedure that monitors messages before the system sends them to the destination window procedure. For more information, see the CallWndProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_CBT">
+            <summary>
+            Installs a hook procedure that receives notifications useful to a CBT application. For more information, see the CBTProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_SYSMSGFILTER">
+            <summary>
+            Installs a hook procedure that monitors messages generated as a result of an input event in a dialog box, message box, menu, or scroll bar. The hook procedure monitors these messages for all applications in the same desktop as the calling thread. For more information, see the SysMsgProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_MOUSE">
+            <summary>
+            Installs a hook procedure that monitors mouse messages. For more information, see the MouseProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_HARDWARE">
+            <summary>
+            当调用 GetMessage 或 PeekMessage 来从消息队列种查询非鼠标、键盘消息时
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_DEBUG">
+            <summary>
+            Installs a hook procedure useful for debugging other hook procedures. For more information, see the DebugProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_SHELL">
+            <summary>
+            Installs a hook procedure that receives notifications useful to shell applications. For more information, see the ShellProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_FOREGROUNDIDLE">
+            <summary>
+            Installs a hook procedure that will be called when the application's foreground thread is about to become idle. This hook is useful for performing low priority tasks during idle time. For more information, see the ForegroundIdleProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_CALLWNDPROCRET">
+            <summary>
+            Installs a hook procedure that monitors messages after they have been processed by the destination window procedure. For more information, see the CallWndRetProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_KEYBOARD_LL">
+            <summary>
+            Installs a hook procedure that monitors low-level keyboard input events. For more information, see the LowLevelKeyboardProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WH_MOUSE_LL">
+            <summary>
+            Installs a hook procedure that monitors low-level mouse input events. For more information, see the LowLevelMouseProc hook procedure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.DELETE">
+            <summary>
+            Required to delete the object.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.READ_CONTROL">
+            <summary>
+            Required to read information in the security descriptor for the object, not including the information in the SACL.
+            To read or write the SACL, you must request the ACCESS_SYSTEM_SECURITY access right.
+            For more information, see SACL Access Right.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.SYNCHRONIZE">
+            <summary>
+            The right to use the object for synchronization.
+            This enables a thread to wait until the object is in the signaled state.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WRITE_DAC">
+            <summary>
+            Required to modify the DACL in the security descriptor for the object.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.WRITE_OWNER">
+            <summary>
+            Required to change the owner in the security descriptor for the object.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.STANDARD_RIGHTS_REQUIRED">
+            <summary>
+            Standard Rights Required
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_CREATE_PROCESS">
+            <summary>
+            Required to create a process.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_CREATE_THREAD">
+            <summary>
+            Required to create a thread.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_DUP_HANDLE">
+            <summary>
+            Required to duplicate a handle using DuplicateHandle.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_QUERY_INFORMATION">
+            <summary>
+            Required to retrieve certain information about a process, such as its token, exit code, and priority class (see OpenProcessToken).
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_QUERY_LIMITED_INFORMATION">
+            <summary>
+            Required to retrieve certain information about a process (see GetExitCodeProcess, GetPriorityClass, IsProcessInJob, QueryFullProcessImageName).
+            A handle that has the PROCESS_QUERY_INFORMATION access right is automatically granted PROCESS_QUERY_LIMITED_INFORMATION.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_SET_INFORMATION">
+            <summary>
+            Required to set certain information about a process, such as its priority class (see SetPriorityClass).
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_SET_QUOTA">
+            <summary>
+            Required to set memory limits using SetProcessWorkingSetSize.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_SUSPEND_RESUME">
+            <summary>
+            Required to suspend or resume a process.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_TERMINATE">
+            <summary>
+            Required to terminate a process using TerminateProcess.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_VM_OPERATION">
+            <summary>
+            Required to perform an operation on the address space of a process (see VirtualProtectEx and O:WriteProcessMemory).
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_VM_READ">
+            <summary>
+            Required to read memory in a process using O:ReadProcessMemory.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_VM_WRITE">
+            <summary>
+            Required to write to memory in a process using O:WriteProcessMemory.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.PROCESS_ALL_ACCESS">
+            <summary>
+            All possible access rights for a process object.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.CREATE_SUSPENDED">
+            <summary>
+            线程被创建为挂起状态
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.STACK_SIZE_PARAM_IS_A_RESERVATION">
+            <summary>
+            指定堆栈大小
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.THREAD_QUERY_INFORMATION">
+            <summary>
+            Required to read certain information from the thread object, such as the exit code (see GetExitCodeThread).
+            </summary>
+        </member>
+        <member name="T:FastWin32.NativeMethods.KBDLLHOOKSTRUCT">
+            <summary>
+            Contains information about a low-level keyboard input event.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.KBDLLHOOKSTRUCT.vkCode">
+            <summary>
+            A virtual-key code.
+            The code must be a value in the range 1 to 254.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.KBDLLHOOKSTRUCT.scanCode">
+            <summary>
+            A hardware scan code for the key.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.KBDLLHOOKSTRUCT.flags">
+            <summary>
+            The extended-key flag, event-injected flags, context code, and transition-state flag.
+            This member is specified as follows.
+            An application can use the following values to test the keystroke flags.
+            Testing LLKHF_INJECTED (bit 4) will tell you whether the event was injected.
+            If it was, then testing LLKHF_LOWER_IL_INJECTED (bit 1) will tell you whether or not the event was injected from a process running at lower integrity level.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.KBDLLHOOKSTRUCT.time">
+            <summary>
+            The time stamp for this message, equivalent to what GetMessageTime would return for this message.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.KBDLLHOOKSTRUCT.dwExtraInfo">
+            <summary>
+            Additional information associated with the message.
+            </summary>
+        </member>
+        <member name="T:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION">
+            <summary>
+            Contains information about a range of pages in the virtual address space of a process.
+            The VirtualQuery and VirtualQueryEx functions use this structure.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.BaseAddress">
+            <summary>
+            A pointer to the base address of the region of pages.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.AllocationBase">
+            <summary>
+            A pointer to the base address of a range of pages allocated by the VirtualAlloc function.
+            The page pointed to by the BaseAddress member is contained within this allocation range.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.AllocationProtect">
+            <summary>
+            The memory protection option when the region was initially allocated.
+            This member can be one of the memory protection constants or 0 if the caller does not have access.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.RegionSize">
+            <summary>
+            The size of the region beginning at the base address in which all pages have identical attributes, in bytes.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.State">
+            <summary>
+            The state of the pages in the region.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.Protect">
+            <summary>
+            The access protection of the pages in the region. This member is one of the values listed for the AllocationProtect member.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.Type">
+            <summary>
+            The type of pages in the region.
+            </summary>
+        </member>
+        <member name="F:FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION.UnmanagedSize">
+            <summary>
+            结构体在非托管内存中大小
+            </summary>
+        </member>
+        <member name="T:FastWin32.NativeMethods.EnumChildProc">
+            <summary>
+            回调函数 要继续遍历,返回true;要停止遍历,返回false
+            </summary>
+            <param name="hWnd">子级窗口的句柄</param>
+            <param name="lParam">EnumWindows或EnumDesktopWindows中给出的应用程序定义值</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.NativeMethods.EnumWindowsProc">
+            <summary>
+            回调函数 要继续遍历,返回true;要停止遍历,返回false
+            </summary>
+            <param name="hWnd">顶级窗口的句柄</param>
+            <param name="lParam">EnumWindows或EnumDesktopWindows中给出的应用程序定义值</param>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.NativeMethods.HookProc">
+            <summary>
+            HookProc 回调函数
+            </summary>
+            <param name="nCode">钩子代码传递给当前的钩子过程。下一个钩子过程使用此代码来确定如何处理挂钩信息。</param>
+            <param name="wParam">此参数的含义取决于与当前钩链相关联的钩子类型。</param>
+            <param name="lParam">此参数的含义取决于与当前钩链相关联的钩子类型。</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Byte[],System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Byte[],System.IntPtr,System.IntPtr@)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Void*,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Byte@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Boolean@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Char@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Int16@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.UInt16@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Int32@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.UInt32@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Int64@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.UInt64@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Single@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.Double@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ReadProcessMemory(System.IntPtr,System.IntPtr,System.IntPtr@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            读取内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要读取的内容</param>
+            <param name="nSize">读取内容的大小</param>
+            <param name="lpNumberOfBytesRead">实际读取大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Byte[],System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Byte[],System.IntPtr,System.IntPtr@)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Void*,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Boolean@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Byte@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Char@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Int16@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.UInt16@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Int32@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.UInt32@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Int64@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.UInt64@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Single@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.Double@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.IntPtr@,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WriteProcessMemory(System.IntPtr,System.IntPtr,System.String,System.IntPtr,System.IntPtr*)">
+            <summary>
+            写入内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpBaseAddress">地址</param>
+            <param name="lpBuffer">要写入的内容</param>
+            <param name="nSize">写入内容的大小</param>
+            <param name="lpNumberOfBytesWritten">实际写入大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetModuleFileName(System.IntPtr,System.Text.StringBuilder,System.UInt32)">
+            <summary>
+            获取模块所在路径
+            </summary>
+            <param name="hModule">模块句柄</param>
+            <param name="lpFilename">文件路径</param>
+            <param name="nSize">缓冲区大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetModuleHandle(System.String)">
+            <summary>
+            获取当前进程中符合条件的模块句柄
+            </summary>
+            <param name="lpModuleName">模块名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetProcAddress(System.IntPtr,System.String)">
+            <summary>
+            获取指定模块中导出函数的地址
+            </summary>
+            <param name="hModule">模块句柄</param>
+            <param name="lpProcName">函数名</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.LoadLibrary(System.String)">
+            <summary>
+            加载DLL
+            </summary>
+            <param name="lpFileName">DLL路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SetWindowsHookEx(System.UInt32,FastWin32.NativeMethods.HookProc,System.IntPtr,System.UInt32)">
+            <summary>
+            安装Windows消息钩子
+            </summary>
+            <param name="idHook">将安装的钩子的类型</param>
+            <param name="lpfn">回调函数</param>
+            <param name="hMod">回调函数所在模块的句柄。如果 dwThreadId 指定的线程由当前进程创建并且回调函数在当前进程中，参数必须设置为 IntPtr.Zero</param>
+            <param name="dwThreadId">与回调函数关联的线程ID，0为全局钩子</param>
+            <returns>返回钩子的句柄</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.UnhookWindowsHookEx(System.IntPtr)">
+            <summary>
+            卸载Windows消息钩子
+            </summary>
+            <param name="hhk">要卸载的钩子的句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.CallNextHookEx(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            将钩子信息传递给当前钩子链中的下一个钩子过程。挂钩过程可以在处理挂钩信息之前或之后调用此函数。
+            </summary>
+            <param name="hhk">当前钩子的句柄，可以不填写</param>
+            <param name="nCode">钩子代码传递给当前的钩子过程。下一个钩子过程使用此代码来确定如何处理挂钩信息。</param>
+            <param name="wParam">所述的wParam传递给当前挂钩过程值。此参数的含义取决于与当前钩链相关联的钩子类型。</param>
+            <param name="lParam">所述的lParam传递给当前挂钩过程值。此参数的含义取决于与当前钩链相关联的钩子类型。</param>
+            <returns>该值由链中的下一个钩子过程返回。当前的钩子过程也必须返回此值。返回值的含义取决于钩子类型。有关详细信息，请参阅各个挂钩过程的说明。</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetKeyboardState(System.Byte[])">
+            <summary>
+            将虚拟键的状态拷贝到缓冲区
+            </summary>
+            <param name="lpKeyState">指向一个256字节的数组，数组用于接收每个虚拟键的状态。</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetKeyState(System.Int32)">
+            <summary>
+            获取虚拟键状态
+            </summary>
+            <param name="nVirtKey"></param>
+            <returns>高位为1，表示按下，为0表示未按下。低位为1，表示虚拟键被切换。比如按下Caps Lock键，低位为1，反之低位为0</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ToAscii(System.UInt32,System.UInt32,System.Byte[],System.Char@,System.UInt32)">
+            <summary>
+            该函数将指定的虚拟键码和键盘状态翻译为相应的字符或字符串。该函数使用由给定的键盘布局句柄标识的物理键盘布局和输入语言来翻译代码。
+            </summary>
+            <param name="uVirtKey">指定要翻译的虚拟键码。</param>
+            <param name="uScanCode">定义被翻译键的硬件扫描码。若该键处于Up状态，则该值的最高位被设置。</param>
+            <param name="lpKeyState">指向包含当前键盘状态的一个256字节数组。数组的每个成员包含一个键的状态。若某字节的最高位被设置，则该键处于Down状态。若最低位被设置，则表明该键被触发。在此函数中，仅有Caps Lock键的触发位是相关的。Num Lock和Scroll Lock键的触发状态将被忽略。</param>
+            <param name="lpChar">指向接受翻译所得字符或字符串的缓冲区。</param>
+            <param name="uFlags">定义一个菜单是否处于激活状态。若一菜单是活动的，则该参数为1，否则为0。</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.VirtualAlloc(System.IntPtr,System.IntPtr,System.UInt32,System.UInt32)">
+            <summary>
+            在当前进程中分配内存
+            </summary>
+            <param name="lpAddress">指定一个地址用于分配内存（如果为IntPtr.Zero则自动分配）</param>
+            <param name="dwSize">要分配内存的大小</param>
+            <param name="flAllocationType">内存分配选项</param>
+            <param name="flProtect">内存保护选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.VirtualAllocEx(System.IntPtr,System.IntPtr,System.IntPtr,System.UInt32,System.UInt32)">
+            <summary>
+            分配内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpAddress">指定一个地址用于分配内存（如果为IntPtr.Zero则自动分配）</param>
+            <param name="dwSize">要分配内存的大小</param>
+            <param name="flAllocationType">内存分配选项</param>
+            <param name="flProtect">内存保护选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.VirtualFree(System.IntPtr,System.IntPtr,System.UInt32)">
+            <summary>
+            在当前进程中释放内存
+            </summary>
+            <param name="lpAddress">指定释放内存的地址</param>
+            <param name="dwSize">要释放内存的大小</param>
+            <param name="dwFreeType">内存释放选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.VirtualFreeEx(System.IntPtr,System.IntPtr,System.IntPtr,System.UInt32)">
+            <summary>
+            释放内存
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpAddress">指定释放内存的地址</param>
+            <param name="dwSize">要释放内存的大小</param>
+            <param name="dwFreeType">内存释放选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.VirtualQueryEx(System.IntPtr,System.IntPtr,FastWin32.NativeMethods.MEMORY_BASIC_INFORMATION@,System.IntPtr)">
+            <summary>
+            查询地址空间中内存地址的信息
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpAddress">查询内存的地址</param>
+            <param name="lpBuffer">内存页面信息</param>
+            <param name="dwLength">MEMORY_BASIC_INFORMATION结构的大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.PostThreadMessage(System.UInt32,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            向线程发送消息
+            </summary>
+            <param name="idThread">线程ID</param>
+            <param name="Msg">消息类型</param>
+            <param name="wParam">参数1</param>
+            <param name="lParam">参数2</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SendMessage(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            同步方法发送消息
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <param name="Msg">消息</param>
+            <param name="wParam">参数1</param>
+            <param name="lParam">参数2</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.AttachThreadInput(System.UInt32,System.UInt32,System.Boolean)">
+            <summary>
+            将一个线程的输入处理机制附加或分离到另一个线程的输入处理机制
+            </summary>
+            <param name="idAttach">附加线程的ID，不能是系统线程</param>
+            <param name="idAttachTo">被附加线程的ID，不能是系统线程</param>
+            <param name="fAttach">true为附加，false为分离</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.CloseHandle(System.IntPtr)">
+            <summary>
+            关闭句柄
+            </summary>
+            <param name="hObject">句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.CreateRemoteThread(System.IntPtr,System.Void*,System.IntPtr,System.IntPtr,System.IntPtr,System.UInt32,System.UInt32*)">
+            <summary>
+            创建远程线程
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpThreadAttributes"></param>
+            <param name="dwStackSize">堆栈初始大小，如果为0，则使用系统默认</param>
+            <param name="lpStartAddress">远程进程中线程的起始地址</param>
+            <param name="lpParameter">指向要传递给线程函数的变量的指针</param>
+            <param name="dwCreationFlags">线程创建的标志</param>
+            <param name="lpThreadId">指向接收线程标识符的变量的指针</param>
+            <returns>如果函数成功，返回值是新线程的句柄，否则返回值是IntPtr.Zero</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetCurrentProcessId">
+            <summary>
+            获取当前进程ID
+            </summary>
+            <returns>线程ID</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetCurrentThreadId">
+            <summary>
+            获取当前线程ID
+            </summary>
+            <returns>线程ID</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetExitCodeThread(System.IntPtr,System.UInt32@)">
+            <summary>
+            Retrieves the termination status of the specified thread.
+            </summary>
+            <param name="hThread">A handle to the thread.</param>
+            <param name="lpExitCode">A pointer to a variable to receive the thread termination status.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetProcessIdOfThread(System.IntPtr)">
+            <summary>
+            获取线程所在进程的ID
+            </summary>
+            <param name="Thread">线程句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.IsWow64Process(System.IntPtr,System.Boolean@)">
+            <summary>
+            获取指定的进程是否在WOW64下运行
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="Wow64Process">
+            32位进程运行在32位Windows下：false
+            32位进程运行在64位Windows下：true
+            64位进程运行在64位Windows下：false
+            </param>
+            <returns>返回值是函数是否执行成功，而不是是否为64位进程！！！</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.OpenProcess(System.UInt32,System.Boolean,System.UInt32)">
+            <summary>
+            打开进程
+            </summary>
+            <param name="dwDesiredAccess">权限</param>
+            <param name="bInheritHandle">是否继承</param>
+            <param name="dwProcessId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.OpenThread(System.UInt32,System.Boolean,System.UInt32)">
+            <summary>
+            打开线程
+            </summary>
+            <param name="dwDesiredAccess">权限</param>
+            <param name="bInheritHandle">是否继承</param>
+            <param name="dwThreadId">线程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SafeOpenProcess(System.UInt32,System.Boolean,System.UInt32)">
+            <summary>
+            打开进程
+            </summary>
+            <param name="dwDesiredAccess">权限</param>
+            <param name="bInheritHandle">是否继承</param>
+            <param name="dwProcessId">进程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SafeOpenThread(System.UInt32,System.Boolean,System.UInt32)">
+            <summary>
+            打开线程
+            </summary>
+            <param name="dwDesiredAccess">权限</param>
+            <param name="bInheritHandle">是否继承</param>
+            <param name="dwThreadId">线程ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.EnumProcesses(System.UInt32@,System.UInt32,System.UInt32@)">
+            <summary>
+            遍历所有进程ID
+            </summary>
+            <param name="pProcessIds">进程ID</param>
+            <param name="cb"></param>
+            <param name="pBytesReturned"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.EnumProcessModules(System.IntPtr,System.IntPtr*,System.UInt32,System.UInt32@)">
+            <summary>
+            遍历进程的所有模块
+            </summary>
+            <param name="hProcess">进程的句柄</param>
+            <param name="lphModule">模块句柄</param>
+            <param name="cb">储存模块句柄的字节数</param>
+            <param name="lpcbNeeded">储存所有模块句柄所需的字节数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.EnumProcessModulesEx(System.IntPtr,System.IntPtr*,System.UInt32,System.UInt32@,System.UInt32)">
+            <summary>
+            遍历进程的所有模块
+            </summary>
+            <param name="hProcess">进程的句柄</param>
+            <param name="lphModule">模块句柄</param>
+            <param name="cb">储存模块句柄的字节数</param>
+            <param name="lpcbNeeded">储存所有模块句柄所需的字节数</param>
+            <param name="dwFilterFlag">过滤条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetModuleBaseName(System.IntPtr,System.IntPtr,System.Text.StringBuilder,System.UInt32)">
+            <summary>
+            获取模块名
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="hModule">模块句柄</param>
+            <param name="lpBaseName">模块名</param>
+            <param name="nSize">最大模块名长度</param>
+            <returns>成功将返回非零整数</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetProcessImageFileName(System.IntPtr,System.Text.StringBuilder,System.UInt32)">
+            <summary>
+            获取进程路径
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <param name="lpImageFileName">进程路径</param>
+            <param name="nSize">缓存区大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ShellExecuteEx(FastWin32.NativeMethods.SHELLEXECUTEINFO@)">
+            <summary>
+            启动程序
+            </summary>
+            <param name="pExecInfo">选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.WaitForSingleObject(System.IntPtr,System.UInt32)">
+            <summary>
+            等待对象被关闭
+            </summary>
+            <param name="hHandle">对象的句柄</param>
+            <param name="dwMilliseconds">最多等待多少毫秒</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.EnumChildWindows(System.IntPtr,FastWin32.NativeMethods.EnumChildProc,System.IntPtr)">
+            <summary>
+            遍历所有子窗口
+            </summary>
+            <param name="hWndParent">父窗口句柄</param>
+            <param name="lpEnumFunc"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.EnumWindows(FastWin32.NativeMethods.EnumWindowsProc,System.IntPtr)">
+            <summary>
+            遍历所有顶级窗口
+            </summary>
+            <param name="lpEnumFunc"></param>
+            <param name="lParam">自定义参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.FindWindow(System.String,System.String)">
+            <summary>
+            查找窗口
+            </summary>
+            <param name="lpClassName">窗口类名</param>
+            <param name="lpWindowName">窗口标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.FindWindowEx(System.IntPtr,System.IntPtr,System.String,System.String)">
+            <summary>
+            查找窗口
+            </summary>
+            <param name="hWndParent">父窗口句柄</param>
+            <param name="hWndChildAfter">从此窗口之后开始查找（此窗口必须为父窗口的直接子窗口）</param>
+            <param name="lpszClass">窗口类名</param>
+            <param name="lpszWindow">窗口标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetForegroundWindow">
+            <summary>
+            获取当前顶端窗口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetShellWindow">
+            <summary>
+            获取Program Manager的窗口句柄
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.GetWindowThreadProcessId(System.IntPtr,System.UInt32*)">
+            <summary>
+            获取某个窗口的创建者的线程ID和进程ID
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <param name="lpdwProcessId">进程ID</param>
+            <returns>线程ID</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.IsWindow(System.IntPtr)">
+            <summary>
+            是否为有效窗口
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            设置窗口位置
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <param name="hWndInsertAfter">窗口Z序</param>
+            <param name="x">左上顶点x坐标</param>
+            <param name="y">左上顶点y坐标</param>
+            <param name="cx">长度</param>
+            <param name="cy">高度</param>
+            <param name="uFlags">选项</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SetActiveWindow(System.IntPtr)">
+            <summary>
+            激活窗口
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SetFocus(System.IntPtr)">
+            <summary>
+            设置焦点
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SetForegroundWindow(System.IntPtr)">
+            <summary>
+            窗口置顶
+            </summary>
+            <param name="hWnd">窗口句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ZwResumeProcess(System.IntPtr)">
+            <summary>
+            恢复进程
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <returns>If the function succeeds, the return value is the thread's previous suspend count.If the function fails, the return value is (DWORD) -1. To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.ZwSuspendProcess(System.IntPtr)">
+            <summary>
+            暂停进程
+            </summary>
+            <param name="hProcess">进程句柄</param>
+            <returns>If the function succeeds, the return value is the thread's previous suspend count; otherwise, it is (DWORD) -1. To get extended error information, use the GetLastError function.</returns>
+        </member>
+        <member name="M:FastWin32.NativeMethods.SelfCheck">
+            <summary>
+            获取所有不支持的本地方法，可以通过反射调用此方法
+            <code>string[] notSupportedMethod = (string[])Assembly.Load("FastWin32").GetType("FastWin32.NativeMethods").GetMethod("SelfCheck", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);</code>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FastWin32.SafeNativeHandle">
+            <summary>
+            安全句柄
+            </summary>
+        </member>
+        <member name="T:FastWin32.Windowing.Window">
+            <summary>
+            窗口
+            </summary>
+        </member>
+        <member name="T:FastWin32.Windowing.Window.EnumWindowsCallback">
+            <summary>
+            遍历窗口回调函数，继续遍历返回true，否则返回false
+            </summary>
+            <param name="windowHandle">窗口句柄</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Windowing.Window.GetDesktopView">
+            <summary>
+            获取包含桌面ListView的句柄
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Windowing.Window.SetForegroundWindow(System.IntPtr)">
+            <summary>
+            将窗口置顶并激活（单次，非永久），非直接调用Win32API SetForegroundWindow，成功率高
+            </summary>
+            <param name="windowHandle">窗口句柄</param>
+        </member>
+        <member name="M:FastWin32.Windowing.Window.FindWindow(System.String,System.String)">
+            <summary>
+            查找窗口
+            </summary>
+            <param name="className">窗口类名</param>
+            <param name="windowName">窗口标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Windowing.Window.FindWindow(System.IntPtr,System.IntPtr,System.String,System.String)">
+            <summary>
+            查找窗口
+            </summary>
+            <param name="parentWindowHandle">父窗口句柄</param>
+            <param name="afterWindowHandle">从此窗口之后开始查找（此窗口必须为父窗口的直接子窗口）</param>
+            <param name="className">窗口类名</param>
+            <param name="windowName">窗口标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Windowing.Window.EnumWindows(FastWin32.Windowing.Window.EnumWindowsCallback)">
+            <summary>
+            遍历所有顶级窗口
+            </summary>
+            <param name="callback">查找到窗口时的回调函数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FastWin32.Windowing.Window.EnumChildWindows(System.IntPtr,FastWin32.Windowing.Window.EnumWindowsCallback)">
+            <summary>
+            遍历所有子窗口
+            </summary>
+            <param name="windowHandleParent">父窗口</param>
+            <param name="callback">查找到窗口时的回调函数</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
