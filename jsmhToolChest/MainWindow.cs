@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 using jsmhToolChest.Netease;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net;
+using System.Windows.Forms.ComponentModel.Com2Interop;
 
 namespace jsmhToolChest
 {
@@ -18,7 +21,7 @@ namespace jsmhToolChest
     {
         public Netease.RegeditRead regedit;
         bool StartBoxButton_isFirstClick = true;
-        
+        public static bool InitializationDone = false;
 
         public MainWindow()
         {
@@ -222,9 +225,28 @@ namespace jsmhToolChest
                     ClientLaunch.ClientInformation.SelectedClient = true;
                     ClientLaunch.ClientInformation.SelectEvent();
                 }
+
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("MaxMemory"))
+                {
+                    textBox2.Text = (string)Config.Config_json["Window"]["MainWindow"]["Settings"]["MaxMemory"];
+                }
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("ClientWidth"))
+                {
+                    textBox4.Text = (string)Config.Config_json["Window"]["MainWindow"]["Settings"]["ClientWidth"];
+                }
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("ClientHeight"))
+                {
+                    textBox5.Text = (string)Config.Config_json["Window"]["MainWindow"]["Settings"]["ClientHeight"];
+                }
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("JVMArguments"))
+                {
+                    textBox3.Text = (string)Config.Config_json["Window"]["MainWindow"]["Settings"]["JVMArguments"];
+                }
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("JavaPath"))
+                {
+                    textBox1.Text = (string)Config.Config_json["Window"]["MainWindow"]["Settings"]["JavaPath"];
+                }
                 
-
-
             } catch (Exception err)
             {
                 ShowError("程序在读取配置时发生错误\r\n错误信息:" + err.Message);
@@ -246,6 +268,7 @@ namespace jsmhToolChest
             menu.Font = new Font("微软雅黑", 12);
             listView1.ContextMenuStrip = menu;
             */
+            InitializationDone = true;
         }
         private void Menu_ShowInformation_Click(object sender, EventArgs e)
         {
@@ -572,6 +595,223 @@ namespace jsmhToolChest
                     ClientLaunch.Mod.SwitchMod(selectedIndex);
                 }
                 
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (button12.Text.Equals("启动客户端"))
+            {
+                ClientLaunch.Launch.LaunchGame();
+            }
+            if (button12.Text.Equals("结束客户端"))
+            {
+                try
+                {
+                    ClientLaunch.Launch.ClientProcess.Kill();
+                }
+                catch
+                {
+
+                }
+                
+            }
+
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            
+            long input;
+            if (long.TryParse(textBox2.Text, out input)){
+                if (input > 2147483647)
+                {
+                    textBox2.Text = "2147483647";
+                    return;
+                } else if (input < 0)
+                {
+                    textBox2.Text = "0";
+                    return;
+                }
+            } else
+            {
+                textBox2.Text = "";
+                return;
+            }
+
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["MaxMemory"] = textBox2.Text;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            long input;
+            if (long.TryParse(textBox4.Text, out input))
+            {
+                if (input > 2147483647)
+                {
+                    textBox4.Text = "2147483647";
+                    return;
+                }
+                else if (input < 0)
+                {
+                    textBox4.Text = "0";
+                    return;
+                }
+            }
+            else
+            {
+                textBox4.Text = "";
+                return;
+            }
+
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["ClientWidth"] = textBox4.Text;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            
+            long input;
+            if (long.TryParse(textBox5.Text, out input))
+            {
+                if (input > 2147483647)
+                {
+                    textBox5.Text = "2147483647";
+                    return;
+                }
+                else if (input < 0)
+                {
+                    textBox5.Text = "0";
+                    return;
+                }
+            }
+            else
+            {
+                textBox5.Text = ""; 
+                return;
+            }
+
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["ClientHeight"] = textBox5.Text;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+            
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["JVMArguments"] = textBox3.Text;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["JavaPath"] = textBox1.Text;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+        }
+
+        private async void button14_Click(object sender, EventArgs e)
+        {
+            string folder = Config.Config_folder + "\\jre8";
+            try
+            {
+                if (Directory.Exists(folder))
+                {
+                    Directory.Delete(folder, true);
+                }
+                
+                Directory.CreateDirectory(folder);
+
+                WebClient client = new WebClient();
+                string url = client.DownloadString(Resource1.ServerURL + "JreDownloadPath.txt");
+
+                Program.mainWindow.Enabled = false;
+                await Download.DownloadUtil.StartDownloadAsync(url, folder + "\\jre8.zip");
+                await UnCompress.UnCompressUtil.StartUnCompressAsync(folder + "\\jre8.zip", folder);
+                MessageBox.Show("jre8下载成功", "成功");
+                Program.mainWindow.Enabled = true;
+                textBox1.Text = folder + "\\bin\\java.exe";
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show("在下载jre8时遇到错误: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "C:\\";
+            openFileDialog1.Filter = "Java可执行文件 (*.exe)|*.exe";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = openFileDialog1.FileName;
+
             }
         }
     }

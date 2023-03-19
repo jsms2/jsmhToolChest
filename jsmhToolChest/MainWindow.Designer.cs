@@ -60,7 +60,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label7 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -81,6 +80,21 @@
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             this.Client.SuspendLayout();
@@ -88,10 +102,10 @@
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Settings.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.About.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartBox
@@ -99,7 +113,7 @@
             this.StartBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.StartBox.Location = new System.Drawing.Point(638, 741);
             this.StartBox.Name = "StartBox";
-            this.StartBox.Size = new System.Drawing.Size(254, 138);
+            this.StartBox.Size = new System.Drawing.Size(274, 138);
             this.StartBox.TabIndex = 0;
             this.StartBox.Text = "启动盒子";
             this.StartBox.UseVisualStyleBackColor = true;
@@ -431,7 +445,9 @@
             // Settings
             // 
             this.Settings.AutoScroll = true;
-            this.Settings.Controls.Add(this.panel1);
+            this.Settings.AutoScrollMargin = new System.Drawing.Size(0, 50);
+            this.Settings.Controls.Add(this.groupBox3);
+            this.Settings.Controls.Add(this.groupBox2);
             this.Settings.ImageIndex = 2;
             this.Settings.Location = new System.Drawing.Point(8, 71);
             this.Settings.Name = "Settings";
@@ -440,22 +456,14 @@
             this.Settings.Text = "设置";
             this.Settings.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1162, 558);
-            this.panel1.TabIndex = 1;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.radioButton1);
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(18, 14);
+            this.groupBox2.Location = new System.Drawing.Point(18, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(272, 210);
+            this.groupBox2.Size = new System.Drawing.Size(1123, 210);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "开端模式";
@@ -673,11 +681,169 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
             // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button12.Location = new System.Drawing.Point(938, 692);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(294, 187);
+            this.button12.TabIndex = 3;
+            this.button12.Text = "启动客户端";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.button14);
+            this.groupBox3.Controls.Add(this.button13);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox3.Location = new System.Drawing.Point(18, 254);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1123, 365);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "客户端设置";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 46);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(148, 41);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Java路径";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(26, 90);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(956, 50);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImage = global::jsmhToolChest.Properties.Resources.folder_64px;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.Location = new System.Drawing.Point(1043, 90);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(50, 50);
+            this.button13.TabIndex = 5;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackgroundImage = global::jsmhToolChest.Properties.Resources.download_64px;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button14.Location = new System.Drawing.Point(988, 90);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(50, 50);
+            this.button14.TabIndex = 6;
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(19, 143);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 41);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "最大内存";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(26, 187);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(351, 50);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "1023";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(383, 196);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 41);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "MB";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 240);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(142, 41);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Jvm参数";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(26, 284);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(1067, 50);
+            this.textBox3.TabIndex = 11;
+            this.textBox3.Text = "-noverify";
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(485, 143);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(114, 41);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "分辨率";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(492, 187);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(278, 50);
+            this.textBox4.TabIndex = 13;
+            this.textBox4.Text = "854";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(776, 196);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(34, 41);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "x";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(816, 187);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(278, 50);
+            this.textBox5.TabIndex = 15;
+            this.textBox5.Text = "480";
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 908);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.is4399);
@@ -698,13 +864,14 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.Settings.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.About.ResumeLayout(false);
             this.About.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,7 +896,6 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.TabPage Settings;
-        public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.RadioButton radioButton2;
         public System.Windows.Forms.RadioButton radioButton1;
@@ -763,6 +929,21 @@
         public System.Windows.Forms.ColumnHeader columnHeader2;
         public System.Windows.Forms.ColumnHeader columnHeader3;
         public System.Windows.Forms.Button button11;
+        public System.Windows.Forms.Button button12;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.Button button14;
+        public System.Windows.Forms.Button button13;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox textBox4;
+        public System.Windows.Forms.Label label13;
     }
 }
 

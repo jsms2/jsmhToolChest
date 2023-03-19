@@ -73,6 +73,16 @@ namespace jsmhToolChest {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
+        internal static byte[] CL8Authlib {
+            get {
+                object obj = ResourceManager.GetObject("CL8Authlib", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
         internal static byte[] DotNetDetour {
             get {
                 object obj = ResourceManager.GetObject("DotNetDetour", resourceCulture);
@@ -120,7 +130,7 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找类似 5.0B2 的本地化字符串。
+        ///   查找类似 5.0B3 的本地化字符串。
         /// </summary>
         internal static string Version {
             get {
