@@ -146,12 +146,18 @@ namespace jsmhToolChest.ClientLaunch
         {
             Program.mainWindow.ClientListView.Items.Clear();
 
-            foreach(JToken jtokenobj in Config.Config_json["Window"]["MainWindow"]["Client"]["ClientList"])
+            
+            if (Config.Config_json["Window"]["MainWindow"]["Client"]["ClientList"] != null)
             {
-                
-                Program.mainWindow.ClientListView.Items.Add(new ListViewItem(new String[] { (string)jtokenobj["name"], (string)jtokenobj["path"] }));
-                
+                foreach (JToken jtokenobj in Config.Config_json["Window"]["MainWindow"]["Client"]["ClientList"])
+                {
+
+                    Program.mainWindow.ClientListView.Items.Add(new ListViewItem(new String[] { (string)jtokenobj["name"], (string)jtokenobj["path"] }));
+
+                }
             }
+
+            
 
 
         }
