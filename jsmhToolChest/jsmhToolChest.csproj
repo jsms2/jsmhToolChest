@@ -236,6 +236,7 @@
       <DependentUpon>DonwloadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Download\DownloadUtil.cs" />
+    <Compile Include="Libraries\File.cs" />
     <Compile Include="UnCompress\UnCompressUtil.cs" />
     <Compile Include="UnCompress\UnCompressForm.cs">
       <SubType>Form</SubType>

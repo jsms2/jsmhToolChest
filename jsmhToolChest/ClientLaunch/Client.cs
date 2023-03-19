@@ -13,6 +13,7 @@ using CmlLib.Core.Auth;
 using CmlLib.Core.Version;
 using SharpCompress.Common;
 using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace jsmhToolChest.ClientLaunch
 {
@@ -35,14 +36,15 @@ namespace jsmhToolChest.ClientLaunch
                 Program.mainWindow.ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
             }
 
-            Program.mainWindow.tabControl2.SelectedIndex = 1;
-            Program.mainWindow.tabControl2.TabPages[1].Text = $"客户端设置 - 当前选择:{ClientName}";
+            
 
             DirectoryInfo directory = new DirectoryInfo(ClientPath);
             if (directory.GetFileSystemInfos().Length == 0)
             {
                 ClientDownload.Start(ClientPath);
             }
+            Program.mainWindow.tabControl2.SelectedIndex = 1;
+            Program.mainWindow.tabControl2.TabPages[1].Text = $"客户端设置 - 当前选择:{ClientName}";
             Reload();
         }
 
@@ -100,9 +102,9 @@ namespace jsmhToolChest.ClientLaunch
     {
         public static void SwitchMod(int index)
         {
-            ListView listview = Program.mainWindow.listView1;
-            string name = listview.Items[index].SubItems[0].Text;
-            string state = listview.Items[index].SubItems[1].Text;
+            
+            string name = Program.mainWindow.listView1.Items[index].SubItems[0].Text;
+            string state = Program.mainWindow.listView1.Items[index].SubItems[1].Text;
             string finalstate = null;
             string finalname = null;
             switch (state)
@@ -110,12 +112,12 @@ namespace jsmhToolChest.ClientLaunch
                 case "启用":
                     finalname = ClientInformation.ClientPath + "\\mods\\" + name + ".dis";
                     finalstate = "禁用";
-                    name = ClientInformation.ClientPath + "\\mods\\" + listview.Items[index].SubItems[0].Text + ".jar";
+                    name = ClientInformation.ClientPath + "\\mods\\" + Program.mainWindow.listView1.Items[index].SubItems[0].Text + ".jar";
                     break;
                 case "禁用":
                     finalname = ClientInformation.ClientPath + "\\mods\\" + name + ".jar";
                     finalstate = "启用";
-                    name = ClientInformation.ClientPath + "\\mods\\" + listview.Items[index].SubItems[0].Text + ".dis";
+                    name = ClientInformation.ClientPath + "\\mods\\" + Program.mainWindow.listView1.Items[index].SubItems[0].Text + ".dis";
                     break ;
                 default:
                     Program.mainWindow.ShowError("程序在处理模组名称时遇到的无法处理的字符串" + state);
@@ -130,7 +132,7 @@ namespace jsmhToolChest.ClientLaunch
             try
             {
                 File.Move(name, finalname);
-                listview.Items[index].SubItems[1].Text = finalstate;
+                Program.mainWindow.listView1.Items[index].SubItems[1].Text = finalstate;
             }
             catch (Exception e)
             {
@@ -164,6 +166,11 @@ namespace jsmhToolChest.ClientLaunch
 
         public static void AddClient(string name,string folder)
         {
+            if (Config.Config_json["Window"]["MainWindow"]["Client"]["ClientList"] == null)
+            {
+                ((JObject)Config.Config_json["Window"]["MainWindow"]["Client"]).Add("ClientList", new JArray());
+            }
+
             JArray clientList = (JArray)Config.Config_json["Window"]["MainWindow"]["Client"]["ClientList"];
             clientList.Add(new JObject(
                     new JProperty("name", name),
@@ -219,6 +226,7 @@ namespace jsmhToolChest.ClientLaunch
                 await UnCompress.UnCompressUtil.StartUnCompressAsync(folder + "\\Client.zip", folder);
                 MessageBox.Show("客户端下载成功", "成功");
                 Program.mainWindow.Enabled = true;
+                ClientInformation.Reload();
             }
             catch (Exception e)
             {
@@ -226,6 +234,37 @@ namespace jsmhToolChest.ClientLaunch
                 MessageBox.Show("在下载客户端时遇到错误: " + e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static async Task StartJre()
+        {
+            string folder = Config.Config_folder + "\\jre8";
+            try
+            {
+                if (Directory.Exists(folder))
+                {
+                    Directory.Delete(folder, true);
+                }
+
+                Directory.CreateDirectory(folder);
+
+                WebClient client = new WebClient();
+                string url = client.DownloadString(Resource1.ServerURL + "JreDownloadPath.txt");
+
+                Program.mainWindow.Enabled = false;
+                await Download.DownloadUtil.StartDownloadAsync(url, folder + "\\jre8.zip");
+                await UnCompress.UnCompressUtil.StartUnCompressAsync(folder + "\\jre8.zip", folder);
+                MessageBox.Show("jre8下载成功", "成功");
+                Program.mainWindow.Enabled = true;
+                Program.mainWindow.textBox1.Text = folder + "\\bin\\java.exe";
+                
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show("在下载jre8时遇到错误: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 
 
@@ -286,6 +325,11 @@ namespace jsmhToolChest.ClientLaunch
                     return;
                 }
                 string java = Program.mainWindow.textBox1.Text;
+                if (java.Equals(""))
+                {
+                    await ClientDownload.StartJre();
+                    java = Program.mainWindow.textBox1.Text;
+                }
                 if (!File.Exists(java))
                 {
                     Program.mainWindow.LogTime();

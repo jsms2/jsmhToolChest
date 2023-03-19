@@ -436,6 +436,7 @@ namespace jsmhToolChest
                 MessageBox.Show("请选中一个客户端", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } else
             {
+                string path = ClientListView.Items[selectedIndex].SubItems[1].Text;
                 if (ClientListView.Items[selectedIndex].SubItems[1].Text.Equals(ClientLaunch.ClientInformation.ClientPath) || ClientListView.Items[selectedIndex].SubItems[0].Text.Equals(ClientLaunch.ClientInformation.ClientName))
                 {
                     ClientLaunch.ClientInformation.ClientPath = "";
@@ -447,6 +448,24 @@ namespace jsmhToolChest
 
                 ClientLaunch.ClientList.DeleteClient(selectedIndex, ClientListView.Items[selectedIndex].SubItems[0].Text, ClientListView.Items[selectedIndex].SubItems[1].Text);
                 ClientLaunch.ClientList.ReloadClientList();
+                if (MessageBox.Show($"客户端已删除，是否要将客户端本地目录{path}里的内容也一并删除？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (MessageBox.Show("你确定吗？这是最后一次警告", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            Libraries.File.ClearDirectory(path);
+                            MessageBox.Show("客户端目录已清空","提示",MessageBoxButtons.OK);
+
+                        } catch(Exception err)
+                        {
+                            MessageBox.Show("目录清空错误,错误信息: " + err.Message, "提示", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        }
+                        
+
+                    }
+                }
+
             }
 
         }
@@ -771,31 +790,7 @@ namespace jsmhToolChest
 
         private async void button14_Click(object sender, EventArgs e)
         {
-            string folder = Config.Config_folder + "\\jre8";
-            try
-            {
-                if (Directory.Exists(folder))
-                {
-                    Directory.Delete(folder, true);
-                }
-                
-                Directory.CreateDirectory(folder);
-
-                WebClient client = new WebClient();
-                string url = client.DownloadString(Resource1.ServerURL + "JreDownloadPath.txt");
-
-                Program.mainWindow.Enabled = false;
-                await Download.DownloadUtil.StartDownloadAsync(url, folder + "\\jre8.zip");
-                await UnCompress.UnCompressUtil.StartUnCompressAsync(folder + "\\jre8.zip", folder);
-                MessageBox.Show("jre8下载成功", "成功");
-                Program.mainWindow.Enabled = true;
-                textBox1.Text = folder + "\\bin\\java.exe";
-            }
-            catch (Exception err)
-            {
-
-                MessageBox.Show("在下载jre8时遇到错误: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            await ClientLaunch.ClientDownload.StartJre();
         }
 
         private void button13_Click(object sender, EventArgs e)
