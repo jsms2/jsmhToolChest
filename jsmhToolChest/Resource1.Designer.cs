@@ -103,9 +103,9 @@ namespace jsmhToolChest {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        internal static byte[] HookFile {
+        internal static byte[] Kupelo {
             get {
-                object obj = ResourceManager.GetObject("HookFile", resourceCulture);
+                object obj = ResourceManager.GetObject("Kupelo", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -130,7 +130,7 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找类似 5.0B5 的本地化字符串。
+        ///   查找类似 5.0B6 的本地化字符串。
         /// </summary>
         internal static string Version {
             get {

@@ -13,7 +13,7 @@ using CmlLib.Core.Auth;
 using CmlLib.Core.Version;
 using SharpCompress.Common;
 using System.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace jsmhToolChest.ClientLaunch
 {
@@ -308,6 +308,7 @@ namespace jsmhToolChest.ClientLaunch
                 {
                     Program.mainWindow.LogTime();
                     Program.mainWindow.ErrorLogs($"客户端启动失败，无法将{Program.mainWindow.textBox2.Text}转换为int形式");
+                    Program.mainWindow.button12.Enabled = true;
                     return;
                 }
                 int Width;
@@ -315,6 +316,7 @@ namespace jsmhToolChest.ClientLaunch
                 {
                     Program.mainWindow.LogTime();
                     Program.mainWindow.ErrorLogs($"客户端启动失败，无法将{Program.mainWindow.textBox4.Text}转换为int形式");
+                    Program.mainWindow.button12.Enabled = true;
                     return;
                 }
                 int Height;
@@ -322,6 +324,7 @@ namespace jsmhToolChest.ClientLaunch
                 {
                     Program.mainWindow.LogTime();
                     Program.mainWindow.ErrorLogs($"客户端启动失败，无法将{Program.mainWindow.textBox5.Text}转换为int形式");
+                    Program.mainWindow.button12.Enabled = true;
                     return;
                 }
                 string java = Program.mainWindow.textBox1.Text;
@@ -334,12 +337,14 @@ namespace jsmhToolChest.ClientLaunch
                 {
                     Program.mainWindow.LogTime();
                     Program.mainWindow.ErrorLogs($"客户端启动失败，Java{java}不存在");
+                    Program.mainWindow.button12.Enabled = true;
                     return;
                 }
                 if (Program.mainWindow.comboBox1.SelectedIndex < 0)
                 {
                     Program.mainWindow.LogTime();
                     Program.mainWindow.ErrorLogs($"客户端启动失败，请选择一个游戏版本");
+                    Program.mainWindow.button12.Enabled = true;
                     return;
                 }
 

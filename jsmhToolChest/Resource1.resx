@@ -130,7 +130,7 @@
   <data name="FastWin32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\FastWin32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="HookFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Kupelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Kupelo.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ServerURL" xml:space="preserve">
@@ -140,6 +140,6 @@
     <value>Resources\Socket.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>5.0B5</value>
+    <value>5.0B6</value>
   </data>
 </root>

@@ -22,7 +22,7 @@ namespace jsmhToolChest.Netease
             try
             {
                 Directory.CreateDirectory(Config.Config_folder + "\\Hook");
-                File.WriteAllBytes(Config.Config_folder + "\\Hook\\Hook.dll", Resource1.HookFile);
+                File.WriteAllBytes(Config.Config_folder + "\\Hook\\Hook.dll", Resource1.Kupelo);
                 File.WriteAllBytes(Config.Config_folder + "\\Hook\\Socket.dll", Resource1.Socket);
                 File.WriteAllBytes(Config.Config_folder + "\\Hook\\DotNetDetour.dll", Resource1.DotNetDetour);
             } catch (Exception e)

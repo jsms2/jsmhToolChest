@@ -36,17 +36,22 @@ namespace jsmhToolChest.Netease
                 while (!loaded && timeoutCount < 50)
                 {
                     Thread.Sleep(200);
-                    WPFProcess.Refresh();
-                    foreach (ProcessModule module in WPFProcess.Modules)
+                    try
                     {
-                        
-                        if (module.ModuleName == "ncrypt.dll")
+                        WPFProcess.Refresh();
+                        foreach (ProcessModule module in WPFProcess.Modules)
                         {
-                            loaded = true;
-                            break;
-                        }
-                    }
 
+                            if (module.ModuleName == "ncrypt.dll")
+                            {
+                                loaded = true;
+                                break;
+                            }
+                        }
+                    } catch
+                    {
+
+                    }
                     if (!loaded)
                     {
                         timeoutCount++;

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace jsmhToolChest.Netease
 {
@@ -39,7 +33,6 @@ namespace jsmhToolChest.Netease
             AntiBanThreadObj = new Thread(new ThreadStart(AntibanThread));
             AntiBanThreadObj.Start();
             return true;
-
         }
         private static void AntibanThread()
         {
@@ -54,8 +47,5 @@ namespace jsmhToolChest.Netease
 
             }
         }
-
-
-
     }
 }
