@@ -16,5 +16,10 @@ namespace jsmhToolChest.Download
         {
             InitializeComponent();
         }
+
+        private void DonwloadForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }

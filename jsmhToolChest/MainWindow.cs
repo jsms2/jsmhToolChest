@@ -14,6 +14,7 @@ using jsmhToolChest.Netease;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net;
 using System.Windows.Forms.ComponentModel.Com2Interop;
+using jsmhToolChest.ClientLaunch;
 
 namespace jsmhToolChest
 {
@@ -258,16 +259,16 @@ namespace jsmhToolChest
             LogBox.SelectionFont = new Font(LogBox.Font.Name, 15, FontStyle.Bold);
             LogBox.AppendText("欢迎使用jsmhToolChest");
 
-            /*
+            
             ContextMenuStrip menu = new ContextMenuStrip();
-            menu.Items.Add("菜单项1");
+            menu.Items.Add("详细信息");
             menu.Items[0].Click += Menu_ShowInformation_Click;
-            menu.Items.Add("菜单项2");
-            menu.Items.Add("菜单项3");
+            //menu.Items.Add("菜单项2");
+            //menu.Items.Add("菜单项3");
             
             menu.Font = new Font("微软雅黑", 12);
             listView1.ContextMenuStrip = menu;
-            */
+            
             InitializationDone = true;
         }
         private void Menu_ShowInformation_Click(object sender, EventArgs e)
@@ -283,11 +284,13 @@ namespace jsmhToolChest
             }
             if (selectedIndex == -1)
             {
-                MessageBox.Show("请选中一个客户端", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("请选中一个模组", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(listView1.Items[selectedIndex].SubItems[0].Text);
+                string path = ClientLaunch.ClientInformation.ClientPath + "\\mods\\" + listView1.Items[selectedIndex].SubItems[0].Text + (listView1.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
+                Mods.ShowModInfomation(path);
+                
             }
 
                 
@@ -807,6 +810,79 @@ namespace jsmhToolChest
             {
                 textBox1.Text = openFileDialog1.FileName;
 
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (Program.mainWindow.comboBox1.SelectedIndex  == -1)
+            {
+                MessageBox.Show("请选择一个客户端", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Minecraft Mods, Minecraft Disabled Mods (*.jar;*.dis)|*.jar;*.dis";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.Title = "添加本地模组";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                if (openFileDialog1.FileNames.Length > 0)
+                {
+                    string[] filesArray = openFileDialog1.FileNames;
+
+                    try
+                    {
+                        foreach (string file in filesArray)
+                        {
+                            string newname = ClientLaunch.ClientInformation.ClientPath + "\\mods\\" + Path.GetFileName(file);
+                            if (File.Exists(newname))
+                            {
+                                File.Delete(newname);
+                            }
+                            File.Copy(file, newname);
+                        }
+                        ClientLaunch.ClientInformation.Reload();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("在复制文件时出现错误: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
+                } else
+                {
+                    MessageBox.Show("请选择一个文件", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+                return;
+            }
+        }
+
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+            for (int i = 0; i < ClientListView.Items.Count; i++)
+            {
+                if (ClientListView.Items[i].Selected)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("请选中一个客户端", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Process.Start("explorer.exe", ClientListView.Items[selectedIndex].SubItems[1].Text);
             }
         }
     }

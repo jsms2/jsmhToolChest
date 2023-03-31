@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace jsmhToolChest.UnCompress
+namespace jsmhToolChest.ClientLaunch
 {
-    public partial class UnCompressForm : Form
+    public partial class ModInfomationForm : Form
     {
-        public UnCompressForm()
+        public ModInfomationForm()
         {
             InitializeComponent();
-        }
-
-        private void UnCompressForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
         }
     }
 }

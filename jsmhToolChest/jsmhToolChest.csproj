@@ -229,6 +229,13 @@
     <Compile Include="ClientLaunch\AddClientForm.Designer.cs">
       <DependentUpon>AddClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientLaunch\ModInfomationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientLaunch\ModInfomationForm.Designer.cs">
+      <DependentUpon>ModInfomationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientLaunch\Mods.cs" />
     <Compile Include="Download\DonwloadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +277,9 @@
     </Compile>
     <EmbeddedResource Include="ClientLaunch\AddClientForm.resx">
       <DependentUpon>AddClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientLaunch\ModInfomationForm.resx">
+      <DependentUpon>ModInfomationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Download\DonwloadForm.resx">
       <DependentUpon>DonwloadForm.cs</DependentUpon>

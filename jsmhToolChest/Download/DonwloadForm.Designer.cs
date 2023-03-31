@@ -89,10 +89,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DonwloadForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DonwloadForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DonwloadForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

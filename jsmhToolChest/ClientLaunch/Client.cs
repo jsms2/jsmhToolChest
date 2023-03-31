@@ -214,6 +214,7 @@ namespace jsmhToolChest.ClientLaunch
             {
                 if (Directory.Exists(folder))
                 {
+                    Libraries.File.ClearDirectory(folder);
                     Directory.Delete(folder, true);
                 }
                 Directory.CreateDirectory(folder);
@@ -380,6 +381,8 @@ namespace jsmhToolChest.ClientLaunch
                 Program.mainWindow.LogTime();
                 Program.mainWindow.ErrorLogs($"客户端启动错误，错误信息: " + e.Message);
                 return;
+                Program.mainWindow.button12.Enabled = true;
+
             }
             
         }
