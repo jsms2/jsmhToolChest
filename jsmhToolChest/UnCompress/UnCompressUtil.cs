@@ -8,8 +8,10 @@ namespace jsmhToolChest.UnCompress
 {
     internal class UnCompressUtil
     {
+        public static bool done = false;
         public static async Task StartUnCompressAsync(string file, string folder, string title = "正在解压文件")
         {
+            done = false;
             UnCompressForm form = new UnCompressForm();
             form.Show();
             form.Text = title;
@@ -60,7 +62,7 @@ namespace jsmhToolChest.UnCompress
                     }
                 }
             }
-
+            done = true;
             form.Close();
         }
 

@@ -19,7 +19,8 @@ namespace jsmhToolChest.UnCompress
 
         private void UnCompressForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
+            e.Cancel = !UnCompressUtil.done;
         }
+
     }
 }

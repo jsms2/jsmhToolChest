@@ -361,7 +361,6 @@
             // 
             this.button6.BackgroundImage = global::jsmhToolChest.Properties.Resources.folder_64px;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Enabled = false;
             this.button6.Location = new System.Drawing.Point(1122, 187);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(64, 64);
@@ -426,9 +425,9 @@
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.Location = new System.Drawing.Point(3, 3);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(457, 41);
+            this.label7.Size = new System.Drawing.Size(658, 41);
             this.label7.TabIndex = 1;
-            this.label7.Text = "模组管理 单击模组可启用/禁用";
+            this.label7.Text = "模组管理 单击模组可启用/禁用 右键显示菜单";
             // 
             // Settings
             // 

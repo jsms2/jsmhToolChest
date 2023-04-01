@@ -16,20 +16,20 @@ namespace jsmhToolChest.Download
     {
 
 
-
+        public static bool done = false;
         public static async Task StartDownloadAsync(string url, string path, string title = "正在下载文件")
         {
-            
-                DonwloadForm form = new DonwloadForm();
-                form.Show();
-                form.Text = title;
-                form.label1.Text = "正在下载" + url;
-                form.label2.Text = "到" + path;
+            done = false;
+            DonwloadForm form = new DonwloadForm();
+            form.Show();
+            form.Text = title;
+            form.label1.Text = "正在下载" + url;
+            form.label2.Text = "到" + path;
 
-                var client = new WebClient();
+            var client = new WebClient();
 
-                try
-                {
+            try
+            {
                 var stopwatch = Stopwatch.StartNew();
                 double last = 0;
                 client.DownloadProgressChanged += (sender, e) =>
@@ -45,16 +45,15 @@ namespace jsmhToolChest.Download
                 };
 
                 await client.DownloadFileTaskAsync(url, path);
-                //client.DownloadFile(url, path);
-                }
-                finally
-                {
-                   client.Dispose();
-                    form.Close();
-                }
-            
-            
-            
+
+            }
+            finally
+            {
+                client.Dispose();
+                done = true;
+                form.Close();
+            }
+
         }
 
     }
