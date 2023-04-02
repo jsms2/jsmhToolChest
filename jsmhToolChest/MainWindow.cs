@@ -866,24 +866,7 @@ namespace jsmhToolChest
 
         private void button6_Click(object sender, EventArgs e)
         {
-            int selectedIndex = -1;
-            for (int i = 0; i < ClientListView.Items.Count; i++)
-            {
-                if (ClientListView.Items[i].Selected)
-                {
-                    selectedIndex = i;
-                    break;
-                }
-            }
-
-            if (selectedIndex == -1)
-            {
-                MessageBox.Show("请选中一个客户端", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                Process.Start("explorer.exe", ClientListView.Items[selectedIndex].SubItems[1].Text);
-            }
+            Process.Start("explorer.exe", ClientLaunch.ClientInformation.ClientPath);
         }
     }
     }

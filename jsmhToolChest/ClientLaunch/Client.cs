@@ -351,7 +351,7 @@ namespace jsmhToolChest.ClientLaunch
 
                 var path = new MinecraftPath(ClientInformation.ClientPath);
                 var launcher = new CMLauncher(path);
-
+                
 
                 var launchOption = new MLaunchOption
                 {
@@ -361,6 +361,7 @@ namespace jsmhToolChest.ClientLaunch
                     Path = path,
                     ScreenWidth = Width,
                     ScreenHeight = Height,
+                    JVMArguments = new string[] { Program.mainWindow.textBox3.Text }
                 };
                 launcher.ProgressChanged += (s, e1) =>
                 {
