@@ -94,6 +94,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             this.Client.SuspendLayout();
@@ -105,12 +106,13 @@
             this.groupBox2.SuspendLayout();
             this.About.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartBox
             // 
             this.StartBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.StartBox.Location = new System.Drawing.Point(638, 741);
+            this.StartBox.Location = new System.Drawing.Point(629, 732);
             this.StartBox.Name = "StartBox";
             this.StartBox.Size = new System.Drawing.Size(274, 138);
             this.StartBox.TabIndex = 0;
@@ -126,7 +128,7 @@
             this.tabControl1.Controls.Add(this.About);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.ImageList = this.MainList;
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1228, 643);
@@ -731,7 +733,7 @@
             // 
             this.is4399.AutoSize = true;
             this.is4399.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.is4399.Location = new System.Drawing.Point(638, 688);
+            this.is4399.Location = new System.Drawing.Point(629, 679);
             this.is4399.Name = "is4399";
             this.is4399.Size = new System.Drawing.Size(254, 45);
             this.is4399.TabIndex = 1;
@@ -749,7 +751,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 688);
+            this.groupBox1.Location = new System.Drawing.Point(3, 679);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(598, 191);
             this.groupBox1.TabIndex = 2;
@@ -817,7 +819,7 @@
             // button12
             // 
             this.button12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button12.Location = new System.Drawing.Point(938, 692);
+            this.button12.Location = new System.Drawing.Point(929, 683);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(294, 187);
             this.button12.TabIndex = 3;
@@ -825,17 +827,25 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Controls.Add(this.button12);
+            this.panel1.Controls.Add(this.StartBox);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.is4399);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1249, 892);
+            this.panel1.TabIndex = 4;
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 908);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.is4399);
-            this.Controls.Add(this.StartBox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1257, 906);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.ShowIcon = false;
@@ -860,8 +870,9 @@
             this.About.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -931,6 +942,7 @@
         public System.Windows.Forms.Label label14;
         public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -280,10 +280,11 @@ namespace jsmhToolChest.ClientLaunch
             try
             {
                 ClientProcess.WaitForExit();
+                Program.mainWindow.LogTime();
+                Program.mainWindow.CustomLogs($"客户端以代码{ClientProcess.ExitCode}结束");
                 ClientProcess = null;
 
-                Program.mainWindow.LogTime();
-                Program.mainWindow.CustomLogs("客户端已结束");
+                
 
             } catch (Exception e)
             {
@@ -381,8 +382,8 @@ namespace jsmhToolChest.ClientLaunch
             {
                 Program.mainWindow.LogTime();
                 Program.mainWindow.ErrorLogs($"客户端启动错误，错误信息: " + e.Message);
-                return;
                 Program.mainWindow.button12.Enabled = true;
+                return;
 
             }
             
