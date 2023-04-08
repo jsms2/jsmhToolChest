@@ -103,7 +103,7 @@ namespace jsmhToolChest.ClientLaunch
                 form.label9.Location = new Point(form.label9.Location.X, form.label15.Location.Y + form.label15.Size.Height);
                 form.label16.Location = new Point(form.label16.Location.X, form.label15.Location.Y + form.label15.Size.Height);
                 form.label16.Text = MergeStrings(mod.Dependencies);
-                form.Size = new Size(form.Size.Width, form.label16.Location.Y + form.label16.Size.Height + 135);
+                form.panel1.Size = new Size(form.panel1.Size.Width, form.label16.Location.Y + form.label16.Size.Height + 135);
                 FileInfo info = new FileInfo(path);
                 form.label17.Text = FormatFileSize(info.Length);
                 form.Text = "模组信息: " + Path.GetFileNameWithoutExtension(path);
