@@ -260,7 +260,8 @@ namespace jsmhToolChest
             LogBox.SelectionFont = new Font(LogBox.Font.Name, 15, FontStyle.Bold);
             LogBox.AppendText("欢迎使用jsmhToolChest");
 
-            
+            Text = "jsmhToolChest " + Resource1.Version;
+
             ContextMenuStrip menu = new ContextMenuStrip();
             menu.Items.Add("详细信息");
             menu.Items[0].Click += Menu_ShowInformation_Click;
