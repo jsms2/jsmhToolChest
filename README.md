@@ -5,6 +5,9 @@ Here is our website: [https://jsmh.red/](https://jsmh.red/)
 ## Usage
 You can get some usage on our [website](https://jsmh.red/).
 
+##Runtime
+Please install .NET Framework 4.7.2 or higher version. [Download .NET Framework 4.7.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472)
+
 ## Frequently Asked Questions
 We have listed some question on our [website](https://jsmh.red/).
 
