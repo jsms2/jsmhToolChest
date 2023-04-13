@@ -331,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FastWin32.xml" />
+    <None Include="Resources\Kupelo.dll" />
     <None Include="Resources\CL8Authlib.jar" />
     <None Include="Resources\download_64px.png" />
     <None Include="Resources\download_32px.png" />
@@ -346,7 +347,6 @@
     <None Include="Resources\add_32px.png" />
     <None Include="Resources\CL8.jar" />
     <None Include="Resources\copy_32px.png" />
-    <None Include="Resources\Kupelo.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
