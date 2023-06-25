@@ -161,7 +161,7 @@ namespace jsmhToolChest
 
             Config.Init();
             try
-            {
+            { 
                 if (((JObject)Config.Config_json["Window"]["MainWindow"]["MainPage"]).ContainsKey("Is4399"))
                 {
                     is4399.Checked = (bool)Config.Config_json["Window"]["MainWindow"]["MainPage"]["Is4399"];
@@ -248,11 +248,12 @@ namespace jsmhToolChest
                 {
                     textBox1.Text = (string)Config.Config_json["Window"]["MainWindow"]["Settings"]["JavaPath"];
                 }
-                
+             
             } catch (Exception err)
             {
                 ShowError("程序在读取配置时发生错误\r\n错误信息:" + err.Message);
             }
+            
 
             ClientLaunch.ClientList.ReloadClientList();
 

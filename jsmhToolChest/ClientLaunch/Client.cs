@@ -37,6 +37,10 @@ namespace jsmhToolChest.ClientLaunch
             }
 
             
+            if (!Directory.Exists(ClientPath))
+            {
+                Directory.CreateDirectory(ClientPath);
+            }
 
             DirectoryInfo directory = new DirectoryInfo(ClientPath);
             if (directory.GetFileSystemInfos().Length == 0)
