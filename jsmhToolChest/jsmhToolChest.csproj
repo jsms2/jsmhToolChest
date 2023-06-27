@@ -263,7 +263,6 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Netease\AntiBan.cs" />
     <Compile Include="Netease\ClientLauncher.cs" />
     <Compile Include="Netease\NeteaseClient.cs" />
     <Compile Include="Netease\WPFLauncher.cs" />

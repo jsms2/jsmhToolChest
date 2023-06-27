@@ -154,34 +154,7 @@ namespace jsmhToolChest.Netease
                         Program.mainWindow.CustomLogs("获取网易客户端信息失败: " + e.Message);
                     }
 
-                    try
-                    {
-                        int trycount = 0;
-                        while(!AntiBan.Start() && trycount < 20) { 
-                            Thread.Sleep(500);
-                            trycount += 1;
-                            if (NeteaseClient.GetNeteaseClientProcess() == null)
-                            {
-                                trycount = 20;
-                                break;
-                            }
-
-                        }
-                        if (trycount == 20) {
-                            Program.mainWindow.LogTime();
-                            Program.mainWindow.ErrorLogs("内存防封开启超时");
-                        } else
-                        {
-                            Program.mainWindow.LogTime();
-                            Program.mainWindow.SuccessLogs("内存防封已开启");
-                        }
-                            
-
-                    }catch (Exception e)
-                    {
-                        Program.mainWindow.LogTime();
-                        Program.mainWindow.ErrorLogs("内存防封开启错误: " + e.Message);
-                    }
+                    
                     
                 }
                 if (NeteastClientProcess == null && TestedNeteaseClient)
@@ -190,13 +163,7 @@ namespace jsmhToolChest.Netease
                     Program.mainWindow.LogTime();
                     Program.mainWindow.CustomLogs($"网易客户端已结束");
                     Program.mainWindow.ChangeStartBoxText("重启盒子");
-                    try
-                    {
-                        AntiBan.AntiBanThreadObj.Abort();
-                    } catch (Exception e)
-                    {
 
-                    }
                     
                 }
             }
