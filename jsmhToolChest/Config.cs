@@ -28,6 +28,11 @@ namespace jsmhToolChest
             {
                 Directory.CreateDirectory(Config.Config_folder + "\\.minecraft");
             }
+            if (!Directory.Exists(Config.Config_folder + "\\InjectMods"))
+            {
+                Directory.CreateDirectory(Config.Config_folder + "\\InjectMods");
+            }
+
 
             if (File.Exists(Config_folder + "\\Config.json"))
             {

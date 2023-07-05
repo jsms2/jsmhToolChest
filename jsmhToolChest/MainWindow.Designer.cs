@@ -58,6 +58,14 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label7 = new System.Windows.Forms.Label();
+            this.ModsInject = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label15 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -101,6 +109,7 @@
             this.tabControl2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.ModsInject.SuspendLayout();
             this.Settings.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -124,6 +133,7 @@
             // 
             this.tabControl1.Controls.Add(this.Main);
             this.tabControl1.Controls.Add(this.Client);
+            this.tabControl1.Controls.Add(this.ModsInject);
             this.tabControl1.Controls.Add(this.Settings);
             this.tabControl1.Controls.Add(this.About);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -133,6 +143,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1228, 643);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // Main
             // 
@@ -431,6 +442,89 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "模组管理 单击模组可启用/禁用 右键显示菜单";
             // 
+            // ModsInject
+            // 
+            this.ModsInject.Controls.Add(this.button5);
+            this.ModsInject.Controls.Add(this.button15);
+            this.ModsInject.Controls.Add(this.button16);
+            this.ModsInject.Controls.Add(this.listView2);
+            this.ModsInject.Controls.Add(this.label15);
+            this.ModsInject.ImageIndex = 9;
+            this.ModsInject.Location = new System.Drawing.Point(8, 71);
+            this.ModsInject.Name = "ModsInject";
+            this.ModsInject.Size = new System.Drawing.Size(1212, 564);
+            this.ModsInject.TabIndex = 5;
+            this.ModsInject.Text = "注入";
+            this.ModsInject.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = global::jsmhToolChest.Properties.Resources.folder_64px;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button5.Location = new System.Drawing.Point(1130, 186);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(64, 64);
+            this.button5.TabIndex = 9;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.BackgroundImage = global::jsmhToolChest.Properties.Resources.add_64px;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button15.Location = new System.Drawing.Point(1130, 116);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(64, 64);
+            this.button15.TabIndex = 8;
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.BackgroundImage = global::jsmhToolChest.Properties.Resources.reboot_64px;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button16.Location = new System.Drawing.Point(1130, 46);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(64, 64);
+            this.button16.TabIndex = 7;
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listView2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listView2.FullRowSelect = true;
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(10, 44);
+            this.listView2.MultiSelect = false;
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(1114, 517);
+            this.listView2.TabIndex = 4;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.DisplayIndex = 1;
+            this.columnHeader4.Text = "模组文件名";
+            this.columnHeader4.Width = 820;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.DisplayIndex = 0;
+            this.columnHeader5.Text = "模组状态";
+            this.columnHeader5.Width = 146;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label15.Location = new System.Drawing.Point(3, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(658, 41);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "模组管理 单击模组可启用/禁用 右键显示菜单";
+            // 
             // Settings
             // 
             this.Settings.AutoScroll = true;
@@ -728,6 +822,7 @@
             this.MainList.Images.SetKeyName(6, "home_64px.png");
             this.MainList.Images.SetKeyName(7, "minecraft_pickaxe_64px.png");
             this.MainList.Images.SetKeyName(8, "settings_64px.png");
+            this.MainList.Images.SetKeyName(9, "java_64px.png");
             // 
             // is4399
             // 
@@ -862,6 +957,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.ModsInject.ResumeLayout(false);
+            this.ModsInject.PerformLayout();
             this.Settings.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -944,6 +1041,14 @@
         public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabPage ModsInject;
+        public System.Windows.Forms.ListView listView2;
+        public System.Windows.Forms.ColumnHeader columnHeader4;
+        public System.Windows.Forms.ColumnHeader columnHeader5;
+        public System.Windows.Forms.Label label15;
+        public System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Button button15;
+        public System.Windows.Forms.Button button16;
     }
 }
 

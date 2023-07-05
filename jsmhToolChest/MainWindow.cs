@@ -154,7 +154,8 @@ namespace jsmhToolChest
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            if (!VersionCheck.IsLatestVersion())
+            bool LatestVersion = VersionCheck.IsLatestVersion();
+            if (!LatestVersion)
             {
                 MessageBox.Show("当前程序非最新版本，请前往官网或Github下载最新版本。继续使用此版本可能会导致无法使用。\r\nWebside: https://jsmh.red/\r\nQQGuild: https://pd.qq.com/s/b8z1gt7f9\r\nGithub: https://github.com/jsms2/jsmhToolChest","版本验证",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
@@ -262,6 +263,7 @@ namespace jsmhToolChest
             LogBox.AppendText("欢迎使用jsmhToolChest");
 
             Text = "jsmhToolChest " + Resource1.Version;
+            if (!LatestVersion) { Text += " (非最新版本)"; }
 
             ContextMenuStrip menu = new ContextMenuStrip();
             menu.Items.Add("详细信息");
@@ -990,6 +992,16 @@ namespace jsmhToolChest
         private void button6_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", ClientLaunch.ClientInformation.ClientPath);
+        }
+
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 2)
+            {
+                e.Cancel = true;
+                MessageBox.Show("该功能暂未开放");
+            }
         }
     }
     }

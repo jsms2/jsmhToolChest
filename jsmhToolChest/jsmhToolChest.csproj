@@ -245,6 +245,7 @@
     </Compile>
     <Compile Include="Download\DownloadUtil.cs" />
     <Compile Include="Libraries\File.cs" />
+    <Compile Include="ModsInject\ModsInject.cs" />
     <Compile Include="UnCompress\UnCompressUtil.cs" />
     <Compile Include="UnCompress\UnCompressForm.cs">
       <SubType>Form</SubType>
