@@ -23,6 +23,8 @@ namespace jsmhToolChest.Netease
             {
                 Directory.CreateDirectory(Config.Config_folder + "\\Hook");
                 File.WriteAllBytes(Config.Config_folder + "\\Hook\\Hook.dll", Resource1.Kupelo);
+                File.WriteAllBytes(Config.Config_folder + "\\Hook\\Socket.dll", Resource1.Socket);
+
             } catch (Exception e)
             {
                 Program.mainWindow.LogTime();
@@ -57,18 +59,26 @@ namespace jsmhToolChest.Netease
             
             private static void Loop()
             {
+                
                 while(true)
                 {
-                    Socket s = TCP.AcceptSocket();
+                    try
+                    {
+                        Socket s = TCP.AcceptSocket();
+
+                        Byte[] data = new Byte[s.ReceiveBufferSize];
+                        s.Receive(data);
+
+                        string stringdata = Encoding.Default.GetString(data);
+                        stringdata = stringdata.Replace(Encoding.Default.GetString(new byte[1]), "");
+                        string Decode = Encoding.Default.GetString(Convert.FromBase64String(stringdata));
+                        HookMessageEvent(Decode);
+                        Debug.Print(Decode);
+                    } catch (Exception e)
+                    {
+
+                    }
                     
-                    Byte[] data = new Byte[s.ReceiveBufferSize];
-                    s.Receive(data);
-                    
-                    string stringdata = Encoding.Default.GetString(data);
-                    stringdata = stringdata.Replace(Encoding.Default.GetString(new byte[1]), "");
-                    string Decode = Encoding.Default.GetString(Convert.FromBase64String(stringdata));
-                    HookMessageEvent(Decode);
-                    Debug.Print(Decode);
                     
                 }
             }

@@ -136,7 +136,10 @@
   <data name="ServerURL" xml:space="preserve">
     <value>http://111.180.204.131:66/jsmhToolChest/</value>
   </data>
+  <data name="Socket" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Socket.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Version" xml:space="preserve">
-    <value>5.0B21</value>
+    <value>5.0B22</value>
   </data>
 </root>

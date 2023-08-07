@@ -120,7 +120,17 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找类似 5.0B21 的本地化字符串。
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Socket {
+            get {
+                object obj = ResourceManager.GetObject("Socket", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 5.0B22 的本地化字符串。
         /// </summary>
         internal static string Version {
             get {
