@@ -23,8 +23,6 @@ namespace jsmhToolChest.Netease
             {
                 Directory.CreateDirectory(Config.Config_folder + "\\Hook");
                 File.WriteAllBytes(Config.Config_folder + "\\Hook\\Hook.dll", Resource1.Kupelo);
-                File.WriteAllBytes(Config.Config_folder + "\\Hook\\Socket.dll", Resource1.Socket);
-                File.WriteAllBytes(Config.Config_folder + "\\Hook\\DotNetDetour.dll", Resource1.DotNetDetour);
             } catch (Exception e)
             {
                 Program.mainWindow.LogTime();
@@ -78,7 +76,7 @@ namespace jsmhToolChest.Netease
             public static void Start()
             {
                 
-                TCP = new TcpListener(20880);
+                TCP = new TcpListener(new IPAddress(new byte[4] {127, 0, 0, 1}),20880);
                 TCP.Start();
                 ListenerThread = new Thread(new ThreadStart(Loop));
                 ListenerThread.Start();

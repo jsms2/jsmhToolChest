@@ -16,6 +16,7 @@ using System.Net;
 using System.Windows.Forms.ComponentModel.Com2Interop;
 using jsmhToolChest.ClientLaunch;
 using SharpCompress.Common;
+using jsmhToolChest.ModsInject;
 
 namespace jsmhToolChest
 {
@@ -255,6 +256,7 @@ namespace jsmhToolChest
                 ShowError("程序在读取配置时发生错误\r\n错误信息:" + err.Message);
             }
             
+            ModsInjectMain.Reload();
 
             ClientLaunch.ClientList.ReloadClientList();
 
@@ -278,7 +280,22 @@ namespace jsmhToolChest
             menu.Items[4].Click += Menu_Property_Click;
             menu.Font = new Font("微软雅黑", 12);
             listView1.ContextMenuStrip = menu;
-            
+
+            ContextMenuStrip menu2 = new ContextMenuStrip();
+            menu2.Items.Add("详细信息");
+            menu2.Items[0].Click += Menu2_ShowInformation_Click;
+            menu2.Items.Add("删除模组");
+            menu2.Items[1].Click += Menu2_DeleteMod_Click;
+            menu2.Items.Add("重命名");
+            menu2.Items[2].Click += Menu2_Rename_Click;
+            menu2.Items.Add("在文件资源管理器中选择");
+            menu2.Items[3].Click += Menu2_Select_Click;
+            menu2.Items.Add("属性");
+            menu2.Items[4].Click += Menu2_Property_Click;
+            menu2.Font = new Font("微软雅黑", 12);
+            listView2.ContextMenuStrip = menu2;
+
+
             InitializationDone = true;
         }
         private void Menu_ShowInformation_Click(object sender, EventArgs e)
@@ -306,6 +323,31 @@ namespace jsmhToolChest
                 
         }
 
+        private void Menu2_ShowInformation_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+            for (int i = 0; i < listView2.Items.Count; i++)
+            {
+                if (listView2.Items[i].Selected)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("请选中一个模组", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string path = ModsInjectMain.ModsFolder + "\\" + listView2.Items[selectedIndex].SubItems[0].Text + (listView2.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
+                Mods.ShowModInfomation(path);
+
+            }
+
+
+        }
+
         private void Menu_DeleteMod_Click(object sender, EventArgs e)
         {
             int selectedIndex = -1;
@@ -330,6 +372,39 @@ namespace jsmhToolChest
                         File.Delete(path);
                         listView1.Items.RemoveAt(selectedIndex);
                     } catch (Exception err)
+                    {
+                        MessageBox.Show("模组删除出错: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void Menu2_DeleteMod_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+            for (int i = 0; i < listView2.Items.Count; i++)
+            {
+                if (listView2.Items[i].Selected)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("请选中一个模组", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (MessageBox.Show("你确定吗？该操作不可逆", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string path = ModsInjectMain.ModsFolder + "\\" + listView2.Items[selectedIndex].SubItems[0].Text + (listView2.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
+                    try
+                    {
+                        File.Delete(path);
+                        listView2.Items.RemoveAt(selectedIndex);
+                    }
+                    catch (Exception err)
                     {
                         MessageBox.Show("模组删除出错: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -380,6 +455,50 @@ namespace jsmhToolChest
             }
         }
 
+        private void Menu2_Rename_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+            for (int i = 0; i < listView2.Items.Count; i++)
+            {
+                if (listView2.Items[i].Selected)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("请选中一个模组", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string path = ModsInjectMain.ModsFolder + "\\" + listView2.Items[selectedIndex].SubItems[0].Text + (listView2.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
+                string filename = Path.GetFileNameWithoutExtension(path);
+                string fileentension = Path.GetExtension(path);
+                string result = Interaction.InputBox("请输入新名称", "改名 " + filename, filename);
+                if (!result.Equals(""))
+                {
+                    char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+                    if (result.IndexOfAny(invalidFileNameChars) >= 0)
+                    {
+                        MessageBox.Show("请输入一个有效的文件名", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            File.Move(path, ModsInjectMain.ModsFolder + "\\" + result + fileentension);
+                            listView2.Items[selectedIndex].SubItems[0].Text = result;
+                        }
+                        catch (Exception err)
+                        {
+                            MessageBox.Show("模组重命名出错: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
         private void Menu_Select_Click(object sender, EventArgs e)
         {
             int selectedIndex = -1;
@@ -402,6 +521,28 @@ namespace jsmhToolChest
             }
         }
 
+        private void Menu2_Select_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+            for (int i = 0; i < listView2.Items.Count; i++)
+            {
+                if (listView2.Items[i].Selected)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("请选中一个模组", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string path = ModsInjectMain.ModsFolder + "\\" + listView2.Items[selectedIndex].SubItems[0].Text + (listView2.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
+                Process.Start("explorer.exe", $"/select,\"{path}\"");
+            }
+        }
+
         private void Menu_Property_Click(object sender, EventArgs e)
         {
             int selectedIndex = -1;
@@ -420,6 +561,28 @@ namespace jsmhToolChest
             else
             {
                 string path = ClientInformation.ClientPath + "\\mods\\" + listView1.Items[selectedIndex].SubItems[0].Text + (listView1.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
+                Libraries.File.ShowFileProperties(path);
+            }
+        }
+
+        private void Menu2_Property_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+            for (int i = 0; i < listView2.Items.Count; i++)
+            {
+                if (listView2.Items[i].Selected)
+                {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("请选中一个模组", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string path = ModsInjectMain.ModsFolder + "\\" + listView2.Items[selectedIndex].SubItems[0].Text + (listView2.Items[selectedIndex].SubItems[1].Text.Equals("启用") ? ".jar" : ".dis");
                 Libraries.File.ShowFileProperties(path);
             }
         }
@@ -997,10 +1160,82 @@ namespace jsmhToolChest
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (tabControl1.SelectedIndex == 2)
+            
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            ModsInjectMain.Reload();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Minecraft Mods, Minecraft Disabled Mods (*.jar;*.dis)|*.jar;*.dis";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.Title = "添加本地模组";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                e.Cancel = true;
-                MessageBox.Show("该功能暂未开放");
+                if (openFileDialog1.FileNames.Length > 0)
+                {
+                    string[] filesArray = openFileDialog1.FileNames;
+
+                    try
+                    {
+                        foreach (string file in filesArray)
+                        {
+                            string newname = ModsInjectMain.ModsFolder + "\\" + Path.GetFileName(file);
+                            if (File.Exists(newname))
+                            {
+                                File.Delete(newname);
+                            }
+                            File.Copy(file, newname);
+                        }
+                        ModsInjectMain.Reload();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("在复制文件时出现错误: " + err.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("请选择一个文件", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                return;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", ModsInjectMain.ModsFolder);
+        }
+
+        private void listView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if ((e.Button == MouseButtons.Left))
+            {
+                int selectedIndex = -1;
+                for (int i = 0; i < listView2.Items.Count; i++)
+                {
+                    if (listView2.Items[i].Selected)
+                    {
+                        selectedIndex = i;
+                        break;
+                    }
+                }
+
+                if (selectedIndex != -1)
+                {
+                    ModsInjectMain.SwitchMod(selectedIndex);
+                }
+
             }
         }
     }

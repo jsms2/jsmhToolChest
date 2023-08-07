@@ -63,6 +63,16 @@ namespace jsmhToolChest {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
+        internal static byte[] Antiban {
+            get {
+                object obj = ResourceManager.GetObject("Antiban", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
         internal static byte[] CL8 {
             get {
                 object obj = ResourceManager.GetObject("CL8", resourceCulture);
@@ -83,19 +93,9 @@ namespace jsmhToolChest {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        internal static byte[] DotNetDetour {
+        internal static byte[] Injector {
             get {
-                object obj = ResourceManager.GetObject("DotNetDetour", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        internal static byte[] FastWin32 {
-            get {
-                object obj = ResourceManager.GetObject("FastWin32", resourceCulture);
+                object obj = ResourceManager.GetObject("Injector", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -120,17 +120,7 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        internal static byte[] Socket {
-            get {
-                object obj = ResourceManager.GetObject("Socket", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 5.0B20 的本地化字符串。
+        ///   查找类似 5.0B21 的本地化字符串。
         /// </summary>
         internal static string Version {
             get {

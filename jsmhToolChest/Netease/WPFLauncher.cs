@@ -55,7 +55,6 @@ namespace jsmhToolChest.Netease
                     if (!loaded)
                     {
                         timeoutCount++;
-
                     }
 
                 }
@@ -125,6 +124,10 @@ namespace jsmhToolChest.Netease
                             CL8.WriteCL8();
                         }
                     }
+                    if (Program.mainWindow.Radio_Mods.Checked)
+                    {
+                        ModsInject.ModsInjectMain.WriteMods();
+                    }
                     
                     try
                     {
@@ -154,7 +157,7 @@ namespace jsmhToolChest.Netease
                         Program.mainWindow.CustomLogs("获取网易客户端信息失败: " + e.Message);
                     }
 
-                    
+                    Antiban.Start();
                     
                 }
                 if (NeteastClientProcess == null && TestedNeteaseClient)
@@ -164,7 +167,7 @@ namespace jsmhToolChest.Netease
                     Program.mainWindow.CustomLogs($"网易客户端已结束");
                     Program.mainWindow.ChangeStartBoxText("重启盒子");
 
-                    
+                    Antiban.Stop();
                 }
             }
         }

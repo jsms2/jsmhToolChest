@@ -165,7 +165,6 @@
             // Radio_Mods
             // 
             this.Radio_Mods.AutoSize = true;
-            this.Radio_Mods.Enabled = false;
             this.Radio_Mods.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Radio_Mods.Location = new System.Drawing.Point(977, 156);
             this.Radio_Mods.Name = "Radio_Mods";
@@ -466,6 +465,7 @@
             this.button5.Size = new System.Drawing.Size(64, 64);
             this.button5.TabIndex = 9;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button15
             // 
@@ -476,6 +476,7 @@
             this.button15.Size = new System.Drawing.Size(64, 64);
             this.button15.TabIndex = 8;
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button16
             // 
@@ -486,6 +487,7 @@
             this.button16.Size = new System.Drawing.Size(64, 64);
             this.button16.TabIndex = 7;
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // listView2
             // 
@@ -502,6 +504,7 @@
             this.listView2.TabIndex = 4;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView2_MouseClick);
             // 
             // columnHeader4
             // 

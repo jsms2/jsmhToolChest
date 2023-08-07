@@ -38,5 +38,27 @@ namespace jsmhToolChest.Libraries
                 throw new ArgumentException($"Could not find a matching string between \"{before}\" and \"{after}\" in \"{original}\".");
             }
         }
+
+        public static string ByteArrayToHexString(byte[] byteArray)
+        {
+            StringBuilder hex = new StringBuilder(byteArray.Length * 2);
+            foreach (byte b in byteArray)
+            {
+                hex.AppendFormat("{0:x2}", b);
+            }
+            return hex.ToString();
+        }
+
+        
+        public static byte[] HexStringToByteArray(string hexString)
+        {
+            int length = hexString.Length;
+            byte[] byteArray = new byte[length / 2];
+            for (int i = 0; i < length; i += 2)
+            {
+                byteArray[i / 2] = Convert.ToByte(hexString.Substring(i, 2), 16);
+            }
+            return byteArray;
+        }
     }
 }

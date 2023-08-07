@@ -244,8 +244,10 @@
       <DependentUpon>DonwloadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Download\DownloadUtil.cs" />
+    <Compile Include="Libraries\DLLInjector.cs" />
     <Compile Include="Libraries\File.cs" />
     <Compile Include="ModsInject\ModsInject.cs" />
+    <Compile Include="Netease\Antiban.cs" />
     <Compile Include="UnCompress\UnCompressUtil.cs" />
     <Compile Include="UnCompress\UnCompressForm.cs">
       <SubType>Form</SubType>
@@ -321,17 +323,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\FastWin32.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Socket.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DotNetDetour.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="FastWin32.xml" />
     <None Include="Resources\Kupelo.dll" />
+    <None Include="Resources\Injector.exe" />
+    <None Include="Resources\Antiban.dll" />
     <None Include="Resources\CL8Authlib.jar" />
     <None Include="Resources\download_64px.png" />
     <None Include="Resources\download_32px.png" />

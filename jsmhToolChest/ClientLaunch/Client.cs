@@ -373,7 +373,7 @@ namespace jsmhToolChest.ClientLaunch
                     Debug.Print(e1.ProgressPercentage.ToString());
                 };
                 
-                ClientProcess = await launcher.CreateProcessAsync(Program.mainWindow.comboBox1.Text, launchOption,false);
+                ClientProcess = await launcher.CreateProcessAsync(Program.mainWindow.comboBox1.Text, launchOption, false);
                 WriteAuthlib();
                 ClientProcess.Start();
                 Program.mainWindow.LogTime();
