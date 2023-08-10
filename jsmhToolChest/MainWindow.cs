@@ -17,6 +17,7 @@ using System.Windows.Forms.ComponentModel.Com2Interop;
 using jsmhToolChest.ClientLaunch;
 using SharpCompress.Common;
 using jsmhToolChest.ModsInject;
+using System.Threading;
 
 namespace jsmhToolChest
 {
@@ -149,7 +150,7 @@ namespace jsmhToolChest
         }
         public void ShowError(string message)
         {
-            MessageBox.Show(message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Program.mainWindow, message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Process.GetCurrentProcess().Kill();
         }
 
@@ -167,6 +168,15 @@ namespace jsmhToolChest
                 if (((JObject)Config.Config_json["Window"]["MainWindow"]["MainPage"]).ContainsKey("Is4399"))
                 {
                     is4399.Checked = (bool)Config.Config_json["Window"]["MainWindow"]["MainPage"]["Is4399"];
+                }
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("DeleteServerMods"))
+                {
+                    checkBox1.Checked = (bool)Config.Config_json["Window"]["MainWindow"]["Settings"]["DeleteServerMods"];
+                }
+                if (((JObject)Config.Config_json["Window"]["MainWindow"]["Settings"]).ContainsKey("ShowSAuthLoginForm"))
+                {
+                    
+                    checkBox2.Checked = (bool)Config.Config_json["Window"]["MainWindow"]["Settings"]["ShowSAuthLoginForm"];
                 }
                 if (((JObject)Config.Config_json["Window"]["MainWindow"]["MainPage"]).ContainsKey("StartMode"))
                 {
@@ -295,6 +305,8 @@ namespace jsmhToolChest
             menu2.Font = new Font("微软雅黑", 12);
             listView2.ContextMenuStrip = menu2;
 
+            LocalWebServer.Start();
+            
 
             InitializationDone = true;
         }
@@ -1238,6 +1250,34 @@ namespace jsmhToolChest
 
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["DeleteServerMods"] = checkBox1.Checked;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Config.Config_json["Window"]["MainWindow"]["Settings"]["ShowSAuthLoginForm"] = checkBox2.Checked;
+                Config.Save();
+            }
+            catch (Exception err)
+            {
+                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
+            }
+        }
+
+
     }
     }
 

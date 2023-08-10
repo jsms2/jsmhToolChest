@@ -56,6 +56,12 @@ namespace jsmhToolChest.Netease
                 Program.mainWindow.LogTime();
                 Program.mainWindow.ErrorLogs("Hook注入错误信息: " + message.Substring("HookInstallError_".Length, message.Length - "HookInstallError_".Length));
             }
+
+            if ("LoginSuccess".Equals(message))
+            {
+                Program.mainWindow.LogTime();
+                Program.mainWindow.SuccessLogs("网易账号登录成功");
+            }
         }
 
         public class LocalPortListener

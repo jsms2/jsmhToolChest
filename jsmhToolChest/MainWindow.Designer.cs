@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.StartBox = new System.Windows.Forms.Button();
+            this.MainList = new System.Windows.Forms.ImageList(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Main = new System.Windows.Forms.TabPage();
             this.Radio_Mods = new System.Windows.Forms.RadioButton();
@@ -67,6 +68,9 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label15 = new System.Windows.Forms.Label();
             this.Settings = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -92,8 +96,8 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.MainList = new System.Windows.Forms.ImageList(this.components);
-            this.is4399 = new System.Windows.Forms.CheckBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.StartBox = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -101,8 +105,8 @@
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.is4399 = new System.Windows.Forms.CheckBox();
+            this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             this.Client.SuspendLayout();
@@ -111,23 +115,39 @@
             this.tabPage1.SuspendLayout();
             this.ModsInject.SuspendLayout();
             this.Settings.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.About.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // StartBox
+            // MainList
             // 
-            this.StartBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.StartBox.Location = new System.Drawing.Point(629, 732);
-            this.StartBox.Name = "StartBox";
-            this.StartBox.Size = new System.Drawing.Size(274, 138);
-            this.StartBox.TabIndex = 0;
-            this.StartBox.Text = "启动盒子";
-            this.StartBox.UseVisualStyleBackColor = true;
-            this.StartBox.Click += new System.EventHandler(this.StartBox_Click);
+            this.MainList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MainList.ImageStream")));
+            this.MainList.TransparentColor = System.Drawing.Color.Transparent;
+            this.MainList.Images.SetKeyName(0, "home_32px.png");
+            this.MainList.Images.SetKeyName(1, "services_32px.png");
+            this.MainList.Images.SetKeyName(2, "settings_32px.png");
+            this.MainList.Images.SetKeyName(3, "about_32px.png");
+            this.MainList.Images.SetKeyName(4, "minecraft_pickaxe_32px.png");
+            this.MainList.Images.SetKeyName(5, "about_64px.png");
+            this.MainList.Images.SetKeyName(6, "home_64px.png");
+            this.MainList.Images.SetKeyName(7, "minecraft_pickaxe_64px.png");
+            this.MainList.Images.SetKeyName(8, "settings_64px.png");
+            this.MainList.Images.SetKeyName(9, "java_64px.png");
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Controls.Add(this.button12);
+            this.panel1.Controls.Add(this.StartBox);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.is4399);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1249, 892);
+            this.panel1.TabIndex = 4;
             // 
             // tabControl1
             // 
@@ -532,6 +552,7 @@
             // 
             this.Settings.AutoScroll = true;
             this.Settings.AutoScrollMargin = new System.Drawing.Size(0, 50);
+            this.Settings.Controls.Add(this.groupBox4);
             this.Settings.Controls.Add(this.groupBox3);
             this.Settings.Controls.Add(this.groupBox2);
             this.Settings.ImageIndex = 2;
@@ -541,6 +562,40 @@
             this.Settings.TabIndex = 2;
             this.Settings.Text = "设置";
             this.Settings.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkBox2);
+            this.groupBox4.Controls.Add(this.checkBox1);
+            this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox4.Location = new System.Drawing.Point(18, 656);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1123, 172);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "网易盒子设置";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(26, 100);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(840, 45);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "盒子登录时弹出自定义SAuth登录窗口";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(27, 49);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(840, 45);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "白端启动时删除非核心模组(仅白端模式和注入模式有效)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -558,7 +613,7 @@
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.Location = new System.Drawing.Point(18, 254);
+            this.groupBox3.Location = new System.Drawing.Point(18, 266);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1123, 365);
             this.groupBox3.TabIndex = 1;
@@ -693,7 +748,7 @@
             this.groupBox2.Controls.Add(this.radioButton2);
             this.groupBox2.Controls.Add(this.radioButton1);
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox2.Location = new System.Drawing.Point(18, 27);
+            this.groupBox2.Location = new System.Drawing.Point(18, 26);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1123, 210);
             this.groupBox2.TabIndex = 0;
@@ -812,33 +867,27 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "jsmhToolChest";
             // 
-            // MainList
+            // button12
             // 
-            this.MainList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MainList.ImageStream")));
-            this.MainList.TransparentColor = System.Drawing.Color.Transparent;
-            this.MainList.Images.SetKeyName(0, "home_32px.png");
-            this.MainList.Images.SetKeyName(1, "services_32px.png");
-            this.MainList.Images.SetKeyName(2, "settings_32px.png");
-            this.MainList.Images.SetKeyName(3, "about_32px.png");
-            this.MainList.Images.SetKeyName(4, "minecraft_pickaxe_32px.png");
-            this.MainList.Images.SetKeyName(5, "about_64px.png");
-            this.MainList.Images.SetKeyName(6, "home_64px.png");
-            this.MainList.Images.SetKeyName(7, "minecraft_pickaxe_64px.png");
-            this.MainList.Images.SetKeyName(8, "settings_64px.png");
-            this.MainList.Images.SetKeyName(9, "java_64px.png");
+            this.button12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button12.Location = new System.Drawing.Point(929, 683);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(294, 187);
+            this.button12.TabIndex = 3;
+            this.button12.Text = "启动客户端";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // is4399
+            // StartBox
             // 
-            this.is4399.AutoSize = true;
-            this.is4399.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.is4399.Location = new System.Drawing.Point(629, 679);
-            this.is4399.Name = "is4399";
-            this.is4399.Size = new System.Drawing.Size(254, 45);
-            this.is4399.TabIndex = 1;
-            this.is4399.Text = "使用4399盒子";
-            this.is4399.UseMnemonic = false;
-            this.is4399.UseVisualStyleBackColor = false;
-            this.is4399.CheckedChanged += new System.EventHandler(this.is4399_CheckedChanged);
+            this.StartBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.StartBox.Location = new System.Drawing.Point(629, 732);
+            this.StartBox.Name = "StartBox";
+            this.StartBox.Size = new System.Drawing.Size(274, 138);
+            this.StartBox.TabIndex = 0;
+            this.StartBox.Text = "启动盒子";
+            this.StartBox.UseVisualStyleBackColor = true;
+            this.StartBox.Click += new System.EventHandler(this.StartBox_Click);
             // 
             // groupBox1
             // 
@@ -914,28 +963,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
             // 
-            // button12
+            // is4399
             // 
-            this.button12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button12.Location = new System.Drawing.Point(929, 683);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(294, 187);
-            this.button12.TabIndex = 3;
-            this.button12.Text = "启动客户端";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.StartBox);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.is4399);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1249, 892);
-            this.panel1.TabIndex = 4;
+            this.is4399.AutoSize = true;
+            this.is4399.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.is4399.Location = new System.Drawing.Point(629, 679);
+            this.is4399.Name = "is4399";
+            this.is4399.Size = new System.Drawing.Size(254, 45);
+            this.is4399.TabIndex = 1;
+            this.is4399.Text = "使用4399盒子";
+            this.is4399.UseMnemonic = false;
+            this.is4399.UseVisualStyleBackColor = false;
+            this.is4399.CheckedChanged += new System.EventHandler(this.is4399_CheckedChanged);
             // 
             // MainWindow
             // 
@@ -952,6 +991,8 @@
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.Main.ResumeLayout(false);
             this.Main.PerformLayout();
@@ -963,6 +1004,7 @@
             this.ModsInject.ResumeLayout(false);
             this.ModsInject.PerformLayout();
             this.Settings.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -971,87 +1013,87 @@
             this.About.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        public System.Windows.Forms.Button StartBox;
+        public System.Windows.Forms.ImageList MainList;
+        private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.TabPage Main;
-        public System.Windows.Forms.ImageList MainList;
-        public System.Windows.Forms.CheckBox is4399;
-        public System.Windows.Forms.RichTextBox LogBox;
-        public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label label1;
         public System.Windows.Forms.RadioButton Radio_Mods;
         public System.Windows.Forms.RadioButton Radio_Client;
         public System.Windows.Forms.RadioButton Radio_NOAddons;
-        public System.Windows.Forms.TextBox textBox_IP;
-        public System.Windows.Forms.TextBox textBox_name;
-        public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.TabPage Settings;
-        public System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.RadioButton radioButton2;
-        public System.Windows.Forms.RadioButton radioButton1;
-        public System.Windows.Forms.TabPage About;
-        public System.Windows.Forms.LinkLabel linkLabel1;
-        public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.LinkLabel linkLabel2;
-        public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.LinkLabel linkLabel3;
-        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.RichTextBox LogBox;
         public System.Windows.Forms.TabPage Client;
         public System.Windows.Forms.TabControl tabControl2;
-        public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabPage tabPage2;
-        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Button button11;
+        public System.Windows.Forms.Button button10;
+        public System.Windows.Forms.Button button9;
+        public System.Windows.Forms.Button button8;
+        public System.Windows.Forms.Button button7;
+        public System.Windows.Forms.ListView ClientListView;
+        public System.Windows.Forms.ColumnHeader columnHeader2;
+        public System.Windows.Forms.ColumnHeader columnHeader3;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Button button3;
         public System.Windows.Forms.ListView listView1;
         public System.Windows.Forms.ColumnHeader columnHeader1;
         public System.Windows.Forms.ColumnHeader columnHeader6;
-        public System.Windows.Forms.Button button3;
-        public System.Windows.Forms.Button button6;
-        public System.Windows.Forms.Button button4;
-        public System.Windows.Forms.ListView ClientListView;
-        public System.Windows.Forms.Button button7;
-        public System.Windows.Forms.Button button8;
-        public System.Windows.Forms.Button button9;
-        public System.Windows.Forms.Button button10;
-        public System.Windows.Forms.Label label8;
-        public System.Windows.Forms.ComboBox comboBox1;
-        public System.Windows.Forms.ColumnHeader columnHeader2;
-        public System.Windows.Forms.ColumnHeader columnHeader3;
-        public System.Windows.Forms.Button button11;
-        public System.Windows.Forms.Button button12;
-        public System.Windows.Forms.GroupBox groupBox3;
-        public System.Windows.Forms.Button button14;
-        public System.Windows.Forms.Button button13;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.Label label9;
-        public System.Windows.Forms.Label label11;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.Label label10;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.Label label12;
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.Label label14;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage ModsInject;
+        public System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Button button15;
+        public System.Windows.Forms.Button button16;
         public System.Windows.Forms.ListView listView2;
         public System.Windows.Forms.ColumnHeader columnHeader4;
         public System.Windows.Forms.ColumnHeader columnHeader5;
         public System.Windows.Forms.Label label15;
-        public System.Windows.Forms.Button button5;
-        public System.Windows.Forms.Button button15;
-        public System.Windows.Forms.Button button16;
+        public System.Windows.Forms.TabPage Settings;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox textBox4;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Button button14;
+        public System.Windows.Forms.Button button13;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.RadioButton radioButton2;
+        public System.Windows.Forms.RadioButton radioButton1;
+        public System.Windows.Forms.TabPage About;
+        public System.Windows.Forms.LinkLabel linkLabel3;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.LinkLabel linkLabel2;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.LinkLabel linkLabel1;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button button12;
+        public System.Windows.Forms.Button StartBox;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox textBox_IP;
+        public System.Windows.Forms.TextBox textBox_name;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.CheckBox is4399;
+        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.CheckBox checkBox2;
+        public System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

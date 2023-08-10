@@ -246,6 +246,7 @@
     <Compile Include="Download\DownloadUtil.cs" />
     <Compile Include="Libraries\DLLInjector.cs" />
     <Compile Include="Libraries\File.cs" />
+    <Compile Include="LocalWebServer.cs" />
     <Compile Include="ModsInject\ModsInject.cs" />
     <Compile Include="Netease\Antiban.cs" />
     <Compile Include="UnCompress\UnCompressUtil.cs" />

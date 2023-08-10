@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -117,6 +119,11 @@ namespace jsmhToolChest.Netease
                     Program.mainWindow.LogTime();
                     Program.mainWindow.SuccessLogs($"网易客户端已成功启动 PID:{NeteastClientProcess.Id}");
                     Program.mainWindow.ChangeStartBoxText("结束白端");
+
+                    if(Program.mainWindow.checkBox1.Checked || Program.mainWindow.Radio_Client.Checked)
+                    {
+                        DeleteServerMods();
+                    }
                     if (Program.mainWindow.Radio_Client.Checked)
                     {
                         if (Program.mainWindow.radioButton1.Checked)
@@ -170,6 +177,32 @@ namespace jsmhToolChest.Netease
                     Antiban.Stop();
                 }
             }
+        }
+
+        public static void DeleteServerMods()
+        {
+            string ModsFolder = Program.mainWindow.regedit.GetGamePatch() + "\\Game\\.minecraft\\mods\\";
+            foreach (string filepath in Directory.GetFiles(ModsFolder, "*.jar"))
+            {
+                try
+                {
+                    FileInfo file = new FileInfo(filepath);
+                    string filename = file.Name;
+                    if (filename.IndexOf("@3@0") == -1) {
+                        file.Delete();
+                        Program.mainWindow.LogTime();
+                        Program.mainWindow.SuccessLogs($"模组{filename}已删除");
+                    }
+                    
+                    
+                }
+                catch (Exception e)
+                {
+                    Program.mainWindow.LogTime();
+                    Program.mainWindow.ErrorLogs($"在删除单个模组{filepath}时发生错误: {e.Message}");
+                }
+            }
+                
         }
     }
 }
