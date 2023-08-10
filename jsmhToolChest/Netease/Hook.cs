@@ -50,6 +50,12 @@ namespace jsmhToolChest.Netease
                 Program.mainWindow.LogTime();
                 Program.mainWindow.SuccessLogs("Hook成功注入");
             }
+
+            if (message.StartsWith("HookInstallError_"))
+            {
+                Program.mainWindow.LogTime();
+                Program.mainWindow.ErrorLogs("Hook注入错误信息: " + message.Substring("HookInstallError_".Length, message.Length - "HookInstallError_".Length));
+            }
         }
 
         public class LocalPortListener

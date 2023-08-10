@@ -130,7 +130,7 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找类似 5.0B22 的本地化字符串。
+        ///   查找类似 5.0B23 的本地化字符串。
         /// </summary>
         internal static string Version {
             get {
