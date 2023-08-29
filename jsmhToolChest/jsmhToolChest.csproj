@@ -325,10 +325,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FastWin32.xml" />
+    <None Include="Resources\Antiban.dll" />
     <None Include="Resources\Kupelo.dll" />
     <None Include="Resources\Socket.dll" />
     <None Include="Resources\Injector.exe" />
-    <None Include="Resources\Antiban.dll" />
     <None Include="Resources\CL8Authlib.jar" />
     <None Include="Resources\download_64px.png" />
     <None Include="Resources\download_32px.png" />
