@@ -73,19 +73,9 @@ namespace jsmhToolChest {
         /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
-        internal static byte[] CL8 {
+        internal static byte[] Authlib_OpenOpenCL {
             get {
-                object obj = ResourceManager.GetObject("CL8", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Byte[] 类型的本地化资源。
-        /// </summary>
-        internal static byte[] CL8Authlib {
-            get {
-                object obj = ResourceManager.GetObject("CL8Authlib", resourceCulture);
+                object obj = ResourceManager.GetObject("Authlib_OpenOpenCL", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -111,7 +101,17 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找类似 http://111.180.204.131:66/jsmhToolChest/ 的本地化字符串。
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] OpenOpenCL {
+            get {
+                object obj = ResourceManager.GetObject("OpenOpenCL", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 https://cloud.js.mcdds.cn/jsmhToolChest/ 的本地化字符串。
         /// </summary>
         internal static string ServerURL {
             get {
@@ -130,7 +130,7 @@ namespace jsmhToolChest {
         }
         
         /// <summary>
-        ///   查找类似 5.0B26 的本地化字符串。
+        ///   查找类似 5.0B27 的本地化字符串。
         /// </summary>
         internal static string Version {
             get {

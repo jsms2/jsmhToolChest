@@ -246,9 +246,15 @@
     <Compile Include="Download\DownloadUtil.cs" />
     <Compile Include="Libraries\DLLInjector.cs" />
     <Compile Include="Libraries\File.cs" />
+    <Compile Include="Libraries\ProcessWindows.cs" />
     <Compile Include="LocalWebServer.cs" />
     <Compile Include="ModsInject\ModsInject.cs" />
     <Compile Include="Netease\Antiban.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="UnCompress\UnCompressUtil.cs" />
     <Compile Include="UnCompress\UnCompressForm.cs">
       <SubType>Form</SubType>
@@ -274,11 +280,6 @@
     <Compile Include="Netease\RegeditRead.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resource1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ClientLaunch\AddClientForm.resx">
       <DependentUpon>AddClientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,11 +326,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FastWin32.xml" />
-    <None Include="Resources\Antiban.dll" />
     <None Include="Resources\Kupelo.dll" />
+    <None Include="Resources\OpenOpenCL.dll" />
+    <None Include="Resources\Authlib_OpenOpenCL.jar" />
+    <None Include="Resources\Antiban.dll" />
     <None Include="Resources\Socket.dll" />
     <None Include="Resources\Injector.exe" />
-    <None Include="Resources\CL8Authlib.jar" />
     <None Include="Resources\download_64px.png" />
     <None Include="Resources\download_32px.png" />
     <None Include="Resources\done_64px.png" />
@@ -342,7 +344,6 @@
     <None Include="Resources\reboot_32px.png" />
     <None Include="Resources\folder_32px.png" />
     <None Include="Resources\add_32px.png" />
-    <None Include="Resources\CL8.jar" />
     <None Include="Resources\copy_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

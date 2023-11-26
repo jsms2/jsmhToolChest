@@ -121,11 +121,8 @@
   <data name="Antiban" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Antiban.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CL8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\CL8.jar;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="CL8Authlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\CL8Authlib.jar;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Authlib_OpenOpenCL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Authlib_OpenOpenCL.jar;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Injector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Injector.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -133,13 +130,16 @@
   <data name="Kupelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Kupelo.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="OpenOpenCL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OpenOpenCL.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ServerURL" xml:space="preserve">
-    <value>http://111.180.204.131:66/jsmhToolChest/</value>
+    <value>https://cloud.js.mcdds.cn/jsmhToolChest/</value>
   </data>
   <data name="Socket" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Socket.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>5.0B26</value>
+    <value>5.0B27</value>
   </data>
 </root>

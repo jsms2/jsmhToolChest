@@ -34,6 +34,7 @@ namespace jsmhToolChest
 
         private async void StartBox_Click(object sender, EventArgs e)
         {
+
             if(!WPFLauncher.TestedNeteaseClient)
             {
                 StartBox.Enabled = false;
@@ -211,11 +212,6 @@ namespace jsmhToolChest
                     {
                         case 0:
                             radioButton1.Checked = true;
-                            radioButton2.Checked =false;
-                            break;
-                        case 1:
-                            radioButton2.Checked = true;
-                            radioButton1.Checked = false;
                             break;
                         default:
                             ShowError($"程序在读取配置时遇到了无法处理的值: Window.MainWindow.Settings.CLMode的值为{StartMode}");
@@ -678,18 +674,7 @@ namespace jsmhToolChest
                 ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
             }
         }
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                Config.Config_json["Window"]["MainWindow"]["Settings"]["CLMode"] = 1;
-                Config.Save();
-            }
-            catch (Exception err)
-            {
-                ShowError("程序在保存配置时发生错误\r\n错误信息:" + err.Message);
-            }
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

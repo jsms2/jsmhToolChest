@@ -400,7 +400,8 @@ namespace jsmhToolChest.ClientLaunch
                 byte[] au = new byte[0];
                 if (Program.mainWindow.radioButton1.Checked)
                 {
-                    au = Resource1.CL8Authlib;
+                    //au = Resource1.CL8Authlib;
+                    au = Resource1.Authlib_OpenOpenCL;
                 }
                 string file_1521 = ClientInformation.ClientPath + "\\libraries\\com\\mojang\\authlib\\1.5.21\\authlib-1.5.21.jar";
                 string folder_1521 = ClientInformation.ClientPath + "\\libraries\\com\\mojang\\authlib\\1.5.21";
