@@ -9,12 +9,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>jsmhToolChest</RootNamespace>
     <AssemblyName>jsmhToolChest</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -326,9 +327,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FastWin32.xml" />
+    <None Include="Resources\CLInjector.exe" />
+    <None Include="Resources\CL.dll" />
+    <None Include="Resources\Authlib.jar" />
     <None Include="Resources\Kupelo.dll" />
-    <None Include="Resources\OpenOpenCL.dll" />
-    <None Include="Resources\Authlib_OpenOpenCL.jar" />
     <None Include="Resources\Antiban.dll" />
     <None Include="Resources\Socket.dll" />
     <None Include="Resources\Injector.exe" />

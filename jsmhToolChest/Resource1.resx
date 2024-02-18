@@ -121,17 +121,20 @@
   <data name="Antiban" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Antiban.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Authlib_OpenOpenCL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Authlib_OpenOpenCL.jar;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Authlib" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Authlib.jar;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CL.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CLInjector" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CLInjector.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Injector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Injector.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Kupelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Kupelo.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="OpenOpenCL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\OpenOpenCL.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ServerURL" xml:space="preserve">
     <value>https://cloud.js.mcdds.cn/jsmhToolChest/</value>
@@ -140,6 +143,6 @@
     <value>Resources\Socket.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>5.0B27</value>
+    <value>5.0B28</value>
   </data>
 </root>

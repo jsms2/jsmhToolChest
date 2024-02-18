@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,10 @@ namespace jsmhToolChest.Netease
                 Kill();
                 Hook.WriteHookFile();
                 WPFProcess.StartInfo.FileName = Program.mainWindow.regedit.GetWPFPatch();
+                WPFProcess.StartInfo.UseShellExecute = false;
+                WPFProcess.StartInfo.RedirectStandardOutput = true;
+                WPFProcess.StartInfo.RedirectStandardError = true;
+                WPFProcess.StartInfo.CreateNoWindow = true;
                 Program.mainWindow.LogTime();
                 Program.mainWindow.CustomLogs("准备启动盒子");
                 WPFProcess.Start();
@@ -135,41 +140,14 @@ namespace jsmhToolChest.Netease
                     {
                         ModsInject.ModsInjectMain.WriteMods();
                     }
-                    
-                    try
-                    {
-                        string PlayerName = Libraries.String.GetMiddleString(NeteastClientProcess.StartInfo.Arguments, "--username ", " ");
-                        string ServerIP = Libraries.String.GetMiddleString(NeteastClientProcess.StartInfo.Arguments, "--server ", " ");
-                        string ServerPort = Libraries.String.GetMiddleString(NeteastClientProcess.StartInfo.Arguments, "--port ", " ");
-                        Program.mainWindow.LogTime();
-                        Program.mainWindow.CustomLogs("已获取到网易客户端信息");
-                        Program.mainWindow.LogTime();
-                        Program.mainWindow.CustomLogs("游戏名: ");
-                        Program.mainWindow.ImportantLogs(PlayerName);
-                        Program.mainWindow.LogTime();
-                        Program.mainWindow.CustomLogs("服务器IP: ");
-                        Program.mainWindow.ImportantLogs($"{ServerIP}:{ServerPort}");
-
-                        Action action = () =>
-                        {
-                            Program.mainWindow.textBox_name.Text = PlayerName;
-                            Program.mainWindow.textBox_IP.Text = $"{ServerIP}:{ServerPort}";
-                        };
-                        Program.mainWindow.Invoke(action);
-                        
-
-                    } catch (Exception e)
-                    {
-                        Program.mainWindow.LogTime();
-                        Program.mainWindow.CustomLogs("获取网易客户端信息失败: " + e.Message);
-                    }
 
                     //Antiban.Start();
                     if (Program.mainWindow.Radio_Client.Checked)
                     {
                         if (Program.mainWindow.radioButton1.Checked)
                         {
-                            OpenOpenCL.Start();
+                            //OpenOpenCL.Start();
+                            NewCL.Start();
                         }
                     }
                     
@@ -184,7 +162,8 @@ namespace jsmhToolChest.Netease
                     Program.mainWindow.ChangeStartBoxText("重启盒子");
 
                     //Antiban.Stop();
-                    OpenOpenCL.Stop();
+                    //OpenOpenCL.Stop();
+                    NewCL.Stop();
                 }
             }
         }
@@ -213,6 +192,74 @@ namespace jsmhToolChest.Netease
                 }
             }
                 
+        }
+
+        public static string ProcessNeteaseClientArguments(string arguments)
+        {
+            string newArguments = arguments;
+            ProcessNeteaseClientInformation(newArguments);
+            /*
+            if (Program.mainWindow.Radio_Client.Checked)
+            {
+                newArguments = ReplaceArgument(newArguments, "--server", "forbidden");
+                newArguments = ReplaceArgument(newArguments, "--port", "0");
+            }
+            */
+            return newArguments;
+        }
+
+        static string ReplaceArgument(string input, string argument, string replacement)
+        {
+            if (input.Contains(argument))
+            {
+                string pattern = $"{argument}\\s+([^\\s]+)?";
+                Regex regex = new Regex(pattern);
+
+                Match match = regex.Match(input);
+                if (match.Success)
+                {
+                    input = input.Remove(match.Index, match.Length);
+                    input = input.Insert(match.Index, $"{argument} {replacement}");
+                }
+                else
+                {
+                    input += $" {argument} {replacement}";
+                }
+            }
+
+            return input;
+        }
+
+        static void ProcessNeteaseClientInformation(string arguments)
+        {
+            try
+            {
+                string PlayerName = Libraries.String.GetMiddleString(arguments, "--username ", " ");
+                string ServerIP = Libraries.String.GetMiddleString(arguments, "--server ", " ");
+                string ServerPort = Libraries.String.GetMiddleString(arguments, "--port ", " ");
+                Program.mainWindow.LogTime();
+                Program.mainWindow.CustomLogs("已获取到网易客户端信息");
+                Program.mainWindow.LogTime();
+                Program.mainWindow.CustomLogs("游戏名: ");
+                Program.mainWindow.ImportantLogs(PlayerName);
+                Program.mainWindow.LogTime();
+                Program.mainWindow.CustomLogs("服务器IP: ");
+                Program.mainWindow.ImportantLogs($"{ServerIP}:{ServerPort}");
+
+                Action action = () =>
+                {
+                    Program.mainWindow.textBox_name.Text = PlayerName;
+                    Program.mainWindow.textBox_IP.Text = $"{ServerIP}:{ServerPort}";
+                };
+                Program.mainWindow.Invoke(action);
+
+
+            }
+            catch (Exception e)
+            {
+                Program.mainWindow.LogTime();
+                Program.mainWindow.CustomLogs("获取网易客户端信息失败: " + e.Message);
+            }
         }
     }
 }

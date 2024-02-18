@@ -56,7 +56,11 @@ namespace jsmhToolChest.Netease
                 Program.mainWindow.LogTime();
                 Program.mainWindow.ErrorLogs("Hook注入错误信息: " + message.Substring("HookInstallError_".Length, message.Length - "HookInstallError_".Length));
             }
-
+            if (message.StartsWith("HookProcessError_"))
+            {
+                Program.mainWindow.LogTime();
+                Program.mainWindow.ErrorLogs("Hook处理错误信息: " + message.Substring("HookProcessError_".Length, message.Length - "HookProcessError_".Length));
+            }
             if ("LoginSuccess".Equals(message))
             {
                 Program.mainWindow.LogTime();

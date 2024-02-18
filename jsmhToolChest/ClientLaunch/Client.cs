@@ -235,7 +235,7 @@ namespace jsmhToolChest.ClientLaunch
             }
             catch (Exception e)
             {
-
+                Program.mainWindow.Enabled = true;
                 MessageBox.Show("在下载客户端时遇到错误: " + e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -401,7 +401,7 @@ namespace jsmhToolChest.ClientLaunch
                 if (Program.mainWindow.radioButton1.Checked)
                 {
                     //au = Resource1.CL8Authlib;
-                    au = Resource1.Authlib_OpenOpenCL;
+                    au = Resource1.Authlib;
                 }
                 string file_1521 = ClientInformation.ClientPath + "\\libraries\\com\\mojang\\authlib\\1.5.21\\authlib-1.5.21.jar";
                 string folder_1521 = ClientInformation.ClientPath + "\\libraries\\com\\mojang\\authlib\\1.5.21";
