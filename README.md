@@ -1,3 +1,6 @@
+由于《我的世界》PC客户端程序目前已经由“我的世界启动器”转为“发烧游戏”，故为《我的世界》PC客户端程序“我的世界启动器”设计的jsmhToolChest已经不再适于目前的《我的世界》PC客户端程序，jsmhToolChest的生命周期已经完成，jsmhToolChest将会不再受到任何支持。
+
+
 # jsmhToolChest
 jsmhToolChest is a free and open source tool for WPFLauncher.
 Here is our website: [https://jsmh.red/](https://jsmh.red/)
